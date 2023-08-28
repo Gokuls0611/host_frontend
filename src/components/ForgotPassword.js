@@ -42,7 +42,7 @@ export default function ForgotPassword() {
     if((password === retype)){
 
         axios
-        .post('http://localhost:5000/setPassword',{email,password})
+        .post('https://proud-puce-springbok.cyclic.app/setPassword',{email,password})
         .then( res => {
             message.info(res.data.message)
             navigate('/')
@@ -62,7 +62,7 @@ export default function ForgotPassword() {
 const getotp = (e) => {
   e.preventDefault()
       axios
-      .post('http://localhost:5000/forgotPassword',{email})
+      .post('https://proud-puce-springbok.cyclic.app/forgotPassword',{email})
       .then( res => {
           if(res.data.b){
           message.info(res.data.message)
