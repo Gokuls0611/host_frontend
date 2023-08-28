@@ -21,7 +21,7 @@ function Login() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/login',user)
+    axios.post('https://proud-puce-springbok.cyclic.app/login',user)
       .then(res => {
         if (res.data.loginuser) {
           setTimeout(() => {
