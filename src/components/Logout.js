@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function Logout() {
     const navigate = useNavigate()
     const logout=()=>{
-        axios.get("http://localhost:5000/logout")
+        axios.get("https://proud-puce-springbok.cyclic.app/logout")
         .then(res=>{
           navigate('/')
           message.success("Logged Out Successully")
