@@ -8,7 +8,7 @@ export default function About() {
   const navigate = useNavigate()
   useEffect(()=>{
     console.log("use")
-    axios.get('http://localhost:5000/')
+    axios.get('https://proud-puce-springbok.cyclic.app/')
     .then(res=>{
       if(!res.data.valid){
         navigate('/login')
