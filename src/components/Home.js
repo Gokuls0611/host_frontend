@@ -6,7 +6,7 @@ export default function Home() {
     const [name,setName] = useState('')
     const navigate = useNavigate()
     useEffect(()=>{
-      axios.get('http://localhost:5000/')
+      axios.get('https://proud-puce-springbok.cyclic.app/')
       .then(res=>{
         if(!res.data.valid){
             setName(res.data.user)
