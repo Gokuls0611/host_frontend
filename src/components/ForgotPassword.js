@@ -42,14 +42,14 @@ export default function ForgotPassword() {
     if((password === retype)){
 
         axios
-        .post('https://proud-puce-springbok.cyclic.app/setPassword',{email,password})
+        .post('http://localhost:5000/setPassword',{email,password})
         .then( res => {
             message.info(res.data.message)
             navigate('/')
         })
         
     } else {
-        alert("invalid input")
+        message.error("Wrong Password")
     }
     
   }
@@ -62,7 +62,7 @@ export default function ForgotPassword() {
 const getotp = (e) => {
   e.preventDefault()
       axios
-      .post('https://proud-puce-springbok.cyclic.app/forgotPassword',{email})
+      .post('http://localhost:5000/forgotPassword',{email})
       .then( res => {
           if(res.data.b){
           message.info(res.data.message)
@@ -82,7 +82,7 @@ const getotp = (e) => {
 
 const time=()=>{setTimeout(()=>{
   setUser({...user,votp:""})
-},40000)}
+},10000)}
 
 const verify = (e) => {
   e.preventDefault()
@@ -103,6 +103,7 @@ const verify = (e) => {
         </header>
         <div>
         <form>
+          <>
         <div className='container'>
         {
           display.e && (
@@ -138,6 +139,7 @@ const verify = (e) => {
             )
         }
         </div>
+        </>
         </form>
         </div>
     </div>

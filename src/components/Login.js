@@ -1,17 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import axios from 'axios'
 import {Navbar} from './Navbar'
-import { NavLink } from 'react-router-dom'
+import { NavLink ,useNavigate} from 'react-router-dom'
 import {message} from 'antd'
-import { useSignIn } from 'react-auth-kit'
 import './style.css'
 function Login() {
+  const navigate = useNavigate()
   const [user, setUser] = useState({
     email:"",
     password:"",
   });
+
+   useEffect(() => {
+    axios.get('http://localhost:5000/')
+    .then(res=>{
+      if(res.data.valid){
+        navigate('/')
+      }
+      else{
+        navigate('/login')
+      }
+    })
+  }, [navigate]);
+  // useEffect(()=>{
+  //   console.log("useeffect")
+  //   log()
+  // },[log])
+  axios.defaults.withCredentials=true
+  
   const {email,password} = user
-  const signIn = useSignIn()
   const handleChange = (e) => {
     const { name, value } = e.target
     setUser({
@@ -21,19 +38,15 @@ function Login() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://proud-puce-springbok.cyclic.app/login',user)
+    //console.log(user)
+    
+    axios.post('http://localhost:5000/login',user)
       .then(res => {
-        if (res.data.loginuser) {
-          setTimeout(() => {
-            message.success(res.data.message);
-          }, 2000);
-          signIn({
-            token:res.data.user,
-            expiresIn:3600,
-            tokenType:"Bearer",
-            authState:{email:res.data.user.email }
-          })
-        }
+        if (res.data.Login) {
+          localStorage.setItem("token",res.data.token)
+          message.success(res.data.message);
+          navigate('/')
+       }
         else{
           message.error(res.data.message)
         }
@@ -58,7 +71,7 @@ function Login() {
         </div>
         <div className='co1'>
         <NavLink style={({color:'azure'})} to='/ForgotPassword'>Forgot Password?</NavLink>
-        <NavLink style={({color:'azure'})} to='/home'>Continue as Guest</NavLink>
+        <NavLink style={({color:'azure'})} to='/'>Continue as Guest</NavLink>
       </div>
       </form>
       

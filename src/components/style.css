@@ -169,5 +169,10 @@ input::placeholder{
       
   }
 
-  /* forgotpassword page */
-
+/*button in home js*/
+button{
+  text-decoration: none;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
