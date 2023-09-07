@@ -19,7 +19,7 @@ export default function Menu() {
         }
       })
       
-    },[navigate,auth])
+    },[auth,navigate])
     axios.defaults.withCredentials=true
 
     const logout =()=>{
