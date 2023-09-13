@@ -14,11 +14,16 @@ export default function About() {
   const [loading,setLoading] = useState(false);
 
   useEffect(()=>{
+<<<<<<< HEAD
     setTimeout(()=>{
       setLoading(true)
     },400000)
     console.log("use",valid)
    axios.get('http://localhost:5000/')
+=======
+    console.log("use")
+    axios.get('https://proud-puce-springbok.cyclic.app/')
+>>>>>>> a9b69bb435d958135a0764cd5ab3ae84e3d349ba
     .then(res=>{
         setValid(res.data.valid)  
         if(!valid){
@@ -28,7 +33,6 @@ export default function About() {
     .catch(err=>{
       console.log(err)
     })
-    //eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   axios.defaults.withCredentials = true
   return (

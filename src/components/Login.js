@@ -12,7 +12,7 @@ function Login() {
   });
 
    useEffect(() => {
-    axios.get('http://localhost:5000/')
+    axios.get('https://proud-puce-springbok.cyclic.app')
     .then(res=>{
       if(res.data.valid){
         navigate('/')
@@ -40,7 +40,7 @@ function Login() {
     e.preventDefault();
     //console.log(user)
     
-    axios.post('http://localhost:5000/login',user)
+    axios.post('https://proud-puce-springbok.cyclic.app/login',user)
       .then(res => {
         if (res.data.Login) {
           localStorage.setItem("token",res.data.token)

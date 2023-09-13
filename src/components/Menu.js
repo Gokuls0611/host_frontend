@@ -9,7 +9,7 @@ export default function Menu() {
   const [auth,setAuth] = useState(false)
   const navigate = useNavigate()
     useEffect(()=>{
-      axios.get('http://localhost:5000/')
+      axios.get('https://proud-puce-springbok.cyclic.app/')
       .then(res=>{
         if(res.data.valid){
             setAuth(res.data.valid)
@@ -19,11 +19,11 @@ export default function Menu() {
         }
       })
       
-    },[navigate,auth])
+    },[auth,navigate])
     axios.defaults.withCredentials=true
 
     const logout =()=>{
-      axios.get('http://localhost:5000/logout')
+      axios.get('https://proud-puce-springbok.cyclic.app/logout')
       .then(res=>{
         if(res.data.valid){
           setAuth(false)
