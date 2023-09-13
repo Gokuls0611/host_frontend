@@ -1,20 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState} from 'react'
 import './style.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { message } from 'antd'
+import Login from './Login'
+import {CircularProgress} from '@material-ui/core'
+import './style.css'
+
 
 export default function About() {
   const navigate = useNavigate()
+  const [valid,setValid] = useState(false)
+  const [loading,setLoading] = useState(false);
+
   useEffect(()=>{
-    console.log("use")
-    axios.get('http://localhost:5000/')
+    setTimeout(()=>{
+      setLoading(true)
+    },400000)
+    console.log("use",valid)
+   axios.get('http://localhost:5000/')
     .then(res=>{
-      if(!res.data.valid){
-        navigate('/login')
-        message.info("Please Login before see the page")
-      }
-    },[navigate])
+        setValid(res.data.valid)  
+        if(!valid){
+          message.info("Please Login before see the page")
+        }  
+    },[navigate,valid,loading])
     .catch(err=>{
       console.log(err)
     })
@@ -22,9 +32,17 @@ export default function About() {
   },[])
   axios.defaults.withCredentials = true
   return (
+    
     <div>
+      
+      {
+        !loading?(<div className='loading'><CircularProgress/></div>):(  
+          console.log(valid),
+          valid?(<>This is about Page</>):(<Login/>)
+        )
+      }
 
-        This is about Page
+        
     </div>
   )
 }
