@@ -20,7 +20,7 @@
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0",
-    "react": ">=16.8.0"
+    "react": ">=16.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
