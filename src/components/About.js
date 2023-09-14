@@ -39,7 +39,13 @@ export default function About() {
     <div>
       
       {
-        !loading?(<div className='loading'>Loading</div>):(  
+        !loading?(<div className='loading'>
+        <TailSpin
+        color="#00BFFF"
+        height={100}
+        width={100}
+      />
+        </div>):(  
           console.log(valid),
           valid?(<>This is about Page</>):(<Login/>)
         )
