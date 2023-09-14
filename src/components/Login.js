@@ -20,7 +20,7 @@ function Login() {
       width={100}
     />
     },4000)
-    axios.get('https://proud-puce-springbok.cyclic.app')
+    axios.get('https://proud-puce-springbok.cyclic.app/')
     .then(res=>{
       if(res.data.valid){
         navigate('/')
