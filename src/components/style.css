@@ -176,3 +176,9 @@ button{
     padding: 10px 20px;
     color: white;
 }
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 300px;
+ }
