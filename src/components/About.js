@@ -16,9 +16,8 @@ export default function About() {
 
     setTimeout(()=>{
       setLoading(true)
-    },400000)
+    },4000)
     console.log("use",valid)
-   axios.get('http://localhost:5000/')
 
     console.log("use")
     axios.get('https://proud-puce-springbok.cyclic.app/')
