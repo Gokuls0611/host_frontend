@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { message } from 'antd'
 import Login from './Login'
-import {CircularProgress} from '@material-ui/core'
 import './style.css'
 
 
@@ -40,7 +39,7 @@ export default function About() {
     <div>
       
       {
-        !loading?(<div className='loading'><CircularProgress/></div>):(  
+        !loading?(<div className='loading'>Loading</div>):(  
           console.log(valid),
           valid?(<>This is about Page</>):(<Login/>)
         )
