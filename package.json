@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "x.y.z",
-    "@material-ui/core": "^4.12.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -17,10 +16,6 @@
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
-  },
-  "peerDependencies": {
-    "@material-ui/core": "^4.12.4",
-    "antd": "^5.8.4"
   },
   "scripts": {
     "start": "react-scripts start",
