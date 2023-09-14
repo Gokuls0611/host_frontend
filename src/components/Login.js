@@ -13,6 +13,13 @@ function Login() {
   });
 
    useEffect(() => {
+     setTimeout(()=>{
+      <TailSpin
+      color="#00BFFF"
+      height={100}
+      width={100}
+    />
+    },4000)
     axios.get('https://proud-puce-springbok.cyclic.app')
     .then(res=>{
       if(res.data.valid){
@@ -34,13 +41,6 @@ function Login() {
     })
   };
   const handleSubmit = (e) => {
-    setTimeout(()=>{
-      <TailSpin
-      color="#00BFFF"
-      height={100}
-      width={100}
-    />
-    },4000)
     e.preventDefault();
     //console.log(user)
     axios.post('https://proud-puce-springbok.cyclic.app/login',user)
