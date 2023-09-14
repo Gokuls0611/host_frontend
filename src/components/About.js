@@ -30,6 +30,9 @@ export default function About() {
       });
       // eslint-disable-next-line react-hooks/exhaustive-deps
   },[navigate])
+  function showMessage() {
+    message.info("Please Login before seeing the page");
+  }
   axios.defaults.withCredentials = true
   return (
     
