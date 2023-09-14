@@ -5,6 +5,7 @@ import axios from 'axios'
 import { message } from 'antd'
 import {TailSpin} from 'react-loader-spinner'
 import Login from './Login'
+import {TailSpin} from 'react-loader-spinner'
 import './style.css'
 
 
