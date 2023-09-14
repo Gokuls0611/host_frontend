@@ -17,23 +17,20 @@ export default function About() {
 
     setTimeout(()=>{
       setLoading(true)
-    },400000)
-    console.log("use",valid)
-   axios.get('http://localhost:5000/')
-
-    console.log("use")
+    },3000)
     axios.get('https://proud-puce-springbok.cyclic.app/')
-
-    .then(res=>{
-        setValid(res.data.valid)  
-        if(!valid){
-          message.info("Please Login before see the page")
-        }  
-    },[navigate,valid,loading])
-    .catch(err=>{
-      console.log(err)
-    })
-  },[])
+    .then(res => {
+        setValid(res.data.valid);
+        if(!res.data.valid){
+          showMessage()
+        }
+        console.log(valid, "res");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[navigate])
   axios.defaults.withCredentials = true
   return (
     
