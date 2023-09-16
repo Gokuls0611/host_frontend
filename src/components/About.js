@@ -8,20 +8,23 @@ import './style.css';
 import LoadingComponent from './LoadingComponent';
 
 export default function About() {
+  var m = ""
   const navigate = useNavigate();
   const [valid, setValid] = useState(false);
   const [loading,setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
+      if(!valid){
+        message.info(m);
+      }
     }, 6000);
+
 
     axios.get('https://proud-puce-springbok.cyclic.app/')
       .then(res => {
         setValid(res.data.valid);
-        if(!res.data.valid){
-          message.info(res.data.message);
-        }
+        m = res.data.message
         console.log(valid, "res");
       })
       .catch(err => {
