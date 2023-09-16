@@ -18,7 +18,6 @@ export default function Menu() {
           setAuth(res.data.valid)
         }
       })
-      
     },[auth,navigate])
     axios.defaults.withCredentials=true
 

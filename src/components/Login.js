@@ -3,7 +3,6 @@ import axios from 'axios'
 import {Navbar} from './Navbar'
 import { NavLink ,useNavigate} from 'react-router-dom'
 import {message} from 'antd'
-import {TailSpin} from 'react-loader-spinner'
 import './style.css'
 function Login() {
   const navigate = useNavigate()
@@ -34,13 +33,7 @@ function Login() {
     })
   };
   const handleSubmit = (e) => {
-    setTimeout(()=>{
-      <TailSpin
-      color="#00BFFF"
-      height={100}
-      width={100}
-    />
-    },4000)
+    
     e.preventDefault();
     //console.log(user)
     axios.post('https://proud-puce-springbok.cyclic.app/login',user)
