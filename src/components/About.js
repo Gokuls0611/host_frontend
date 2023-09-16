@@ -16,7 +16,7 @@ export default function About() {
       setLoading(false);
     }, 6000);
 
-    axios.get('http://localhost:5000/')
+    axios.get('https://proud-puce-springbok.cyclic.app/')
       .then(res => {
         setValid(res.data.valid);
         if(!res.data.valid){
