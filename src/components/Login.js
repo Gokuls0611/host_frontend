@@ -12,7 +12,14 @@ function Login() {
   });
 
    useEffect(() => {
-    axios.get('https://proud-puce-springbok.cyclic.app')
+     setTimeout(()=>{
+      <TailSpin
+      color="#00BFFF"
+      height={100}
+      width={100}
+    />
+    },4000)
+    axios.get('https://proud-puce-springbok.cyclic.app/')
     .then(res=>{
       if(res.data.valid){
         navigate('/')

@@ -24,17 +24,11 @@ export default function Menu() {
     const logout =()=>{
       axios.get('https://proud-puce-springbok.cyclic.app/logout')
       .then(res=>{
-        if(res.data.valid){
-          setAuth(false)
-          localStorage.clear('token')
-          // window.location.reload(true)
           navigate('/')
-          setTimeout(()=>{
-            message.info(res.data.message)
-          },2000)
-          
-        }
+          message.info(res.data.message)
       })
+      setAuth(!auth)
+      localStorage.clear('token')
     }
   return (
     <div>
