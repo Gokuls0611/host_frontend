@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { message } from 'antd';
 import Login from './Login';
-import image from 'E:\\PHOTOS\\RESUME\\gokul.png'
+import image from 'https://drive.google.com/file/d/1WcG-d-QFCVHdI_PhvUZ3Lngkk20NiB0N/view?usp=drive_link'
 import './style.css';
 import LoadingComponent from './LoadingComponent';
 
