@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { message } from 'antd';
 import Login from './Login';
-import image from 'https://drive.google.com/file/d/1WcG-d-QFCVHdI_PhvUZ3Lngkk20NiB0N/view?usp=drive_link'
 import './style.css';
 import LoadingComponent from './LoadingComponent';
 
@@ -44,9 +43,9 @@ export default function About() {
         <>
         <div className='resume' >
           <div className="photo">
-          <div>
+          {/* <div>
           <img src={image} alt='img.png' height="200px" width="200px" />
-          </div>
+          </div> */}
           <div className='namedeg'>
           <h2 className='name'>Gokul S</h2>
           <p>BE Computer Science and Engineering</p>
