@@ -4,27 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { message } from 'antd';
 import Login from './Login';
+import image from 'E:\\PHOTOS\\RESUME\\gokul.png'
 import './style.css';
 import LoadingComponent from './LoadingComponent';
 
 export default function About() {
-  var m = ""
   const navigate = useNavigate();
   const [valid, setValid] = useState(false);
   const [loading,setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-      if(!valid){
-        message.info(m);
-      }
-    }, 6000);
-
-
-    axios.get('https://proud-puce-springbok.cyclic.app/')
+    }, 4000);
+    const t = localStorage.getItem("token")
+    axios.post('https://proud-puce-springbok.cyclic.app//',{t})
       .then(res => {
         setValid(res.data.valid);
-        m = res.data.message
+        if(!res.data.valid){
+          message.info(res.data.message);
+        }
+        console.log(res.data.valid)
         console.log(valid, "res");
       })
       .catch(err => {
@@ -36,13 +35,41 @@ export default function About() {
 
   axios.defaults.withCredentials = true;
   
-
   return (
+    
     <div>
-      {!loading && !valid ? (
+      {loading? (
         <LoadingComponent/>
       ) : valid ? (
         <>
+        <div className='resume' >
+          <div className="photo">
+          <div>
+          <img src={image} alt='img.png' height="200px" width="200px" />
+          </div>
+          <div className='namedeg'>
+          <h2 className='name'>Gokul S</h2>
+          <p>BE Computer Science and Engineering</p>
+          </div>
+          </div>
+        <section className="careerobj">
+          <div className='ml-obj'>Career Objective</div>
+          <div className='ml'>
+          To expand my learnings, knowledge, and skills. 
+          Secure a responsible career opportunity to fully utilize my training and skills, while making a significant contribution to the success of the company.
+          </div>
+        </section>
+        <section className="careerobj">
+          <div className='ml-obj'>Education</div>
+          <div style={{whiteSpace:"pre"}}   >
+            <h2>
+            Bachelor of Science in Computer Science
+            Kongu Engineering College - Erode
+            </h2>
+          </div>
+        </section>
+        
+        </div>
         <section className="skills">
         <h2>Skills</h2>
         <ul>
