@@ -82,7 +82,7 @@ const getotp = (e) => {
 
 const time=()=>{setTimeout(()=>{
   setUser({...user,votp:""})
-},10000)}
+},30000)}
 
 const verify = (e) => {
   e.preventDefault()
