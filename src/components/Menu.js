@@ -9,9 +9,9 @@ export default function Menu() {
   const [auth,setAuth] = useState(false)
   const navigate = useNavigate()
     useEffect(()=>{
-      axios.get('https://wild-teal-basket-clam-fez.cyclic.cloud/')
+      axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/',{t:localStorage.getItem("token")})
       .then(res=>{
-        if(res.data.valid){
+        if(res.data.valid && localStorage.getItem('token')){
             setAuth(res.data.valid)
         }
         else{
