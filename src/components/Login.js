@@ -20,7 +20,7 @@ function Login() {
       width={100}
     />
     },4000)
-    axios.get('https://wild-teal-basket-clam-fez.cyclic.cloud/')
+    axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
         navigate('/')
