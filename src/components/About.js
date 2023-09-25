@@ -16,7 +16,7 @@ export default function About() {
       setLoading(false);
     }, 4000);
     const t = localStorage.getItem("token")
-    axios.post('https://proud-puce-springbok.cyclic.app//',{t})
+    axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/',{t})
       .then(res => {
         setValid(res.data.valid);
         if(!res.data.valid){
