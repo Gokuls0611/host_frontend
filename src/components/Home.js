@@ -36,7 +36,7 @@ function Home() {
   
 
   useEffect(() => {
-    axios.get("https://proud-puce-springbok.cyclic.app/products")
+    axios.get("https://wild-teal-basket-clam-fez.cyclic.cloud/products")
       .then((response) => {
         const data = response.data;
         setJsonData(data);
