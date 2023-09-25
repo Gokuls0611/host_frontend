@@ -42,7 +42,7 @@ export default function ForgotPassword() {
     if((password === retype)){
 
         axios
-        .post('https://proud-puce-springbok.cyclic.app/setPassword',{email,password})
+        .post('https://wild-teal-basket-clam-fez.cyclic.cloud/setPassword',{email,password})
         .then( res => {
             message.info(res.data.message)
             navigate('/')
