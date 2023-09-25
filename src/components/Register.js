@@ -36,7 +36,7 @@ export default function Register() {
     if( name && email && password && (password === retype)){
 
         axios
-        .post('https://proud-puce-springbok.cyclic.app/register',user)
+        .post('https://wild-teal-basket-clam-fez.cyclic.cloud/register',user)
         .then( res => {
           if(!res.data.Login){
             message.success(res.data.message)
