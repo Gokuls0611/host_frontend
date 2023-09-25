@@ -62,7 +62,7 @@ export default function ForgotPassword() {
 const getotp = (e) => {
   e.preventDefault()
       axios
-      .post('https://proud-puce-springbok.cyclic.app/forgotPassword',{email})
+      .post('https://wild-teal-basket-clam-fez.cyclic.cloud/forgotPassword',{email})
       .then( res => {
           if(res.data.b){
           message.info(res.data.message)
