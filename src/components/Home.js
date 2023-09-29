@@ -40,7 +40,7 @@ function Home() {
     setLoad(true)
     setTimeout(()=>{
       setLoad(false);
-    })
+    },10000)
     axios.get("https://wild-teal-basket-clam-fez.cyclic.cloud/products")
       .then((response) => {
         const data = response.data;
