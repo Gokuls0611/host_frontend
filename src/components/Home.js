@@ -86,7 +86,7 @@ useEffect(()=>{
       </div>
       <div><input type='button' value="Cart" onClick={showcart}/></div>
       
-      {{load && jsonData===null?<LoadingComponent/>:jsonData!==null? (
+      {load && jsonData===null?<LoadingComponent/>:jsonData!==null? (
             value?(
             <div>
               <ul  className='product-container'>
