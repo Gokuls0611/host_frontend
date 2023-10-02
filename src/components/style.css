@@ -319,15 +319,14 @@ input[value="+"],input[value="-"]{
   .product{
     width:100%;
     display: block;
-    max-width: calc(100% - 90px); 
+    max-width:350px; 
   }
   .product-container{
     display: inline-block;
-    width:88%
   }
   img{
     height:200px;
-    width:200px;
+    width:300px;
   }
   .home-search{
     display: inline-block;
