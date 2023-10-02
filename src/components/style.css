@@ -322,7 +322,7 @@ input[value="+"],input[value="-"]{
     max-width:350px; 
   }
   .product-container{
-    display: inline-block;
+    display: inline-flex;
   }
   img{
     height:200px;
