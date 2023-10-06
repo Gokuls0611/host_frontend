@@ -59,9 +59,9 @@ export default function ForgotPassword() {
 }
 
 
-const getotp = (e) => {
+const getotp = async(e) => {
   e.preventDefault()
-      axios
+      await axios
       .post('https://wild-teal-basket-clam-fez.cyclic.cloud/forgotPassword',{email})
       .then( res => {
           if(res.data.b){
