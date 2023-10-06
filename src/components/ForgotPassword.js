@@ -72,7 +72,6 @@ const getotp = (e) => {
               ...user,
               votp:res.data.otp
             })
-            time();
           }
           else{
             message.error(res.data.message)
@@ -80,14 +79,11 @@ const getotp = (e) => {
       })
 }
 
-const time=()=>{setTimeout(()=>{
-  setUser({...user,votp:""})
-},30000)}
-
 const verify = (e) => {
   e.preventDefault()
       if(parseInt(votp) === parseInt(otp)){
         message.success("OTP verified Successfully")
+        setUser({...user,votp:""})
         setDisplay({o:!display.o,p:!display.p})
       } 
       else{
