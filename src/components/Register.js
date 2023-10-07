@@ -44,7 +44,7 @@ export default function Register() {
           else{
             message.info(res.data.message)
           }
-            navigate('/')
+            navigate('/login')
 
         })
         

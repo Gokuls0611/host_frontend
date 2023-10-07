@@ -71,7 +71,7 @@ function Login() {
           <input name='password' type='password' value={password} onChange={handleChange} placeholder='Enter Password' />
         </div>
         <div>
-          <input type='submit' value={<TailSpin/>}  onClick={handleSubmit} />
+          <input type='submit' value="Login"  onClick={handleSubmit} />
         </div>
         <div className='co1'>
         <NavLink style={({color:'azure'})} to='/ForgotPassword'>Forgot Password?</NavLink>
