@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './cart.css'
 import { NavLink,useNavigate } from 'react-router-dom'
+import LoadingComponent from './LoadingComponent'
 import { message } from 'antd'
 
 export default function Placeorder() {
     const navigate = useNavigate()
     const [order,setOrder] = useState([])
     const [oid,setOid] = useState([])
-
+    const [loading,setLoading] = useState(true)
     const order_delete =(e) =>{
         axios.post("https://backend-kdfp.onrender.com/",{t:localStorage.getItem('token')})
         .then(res=>{
@@ -19,6 +20,7 @@ export default function Placeorder() {
                 .then(res=>{
                 setOrder(res.data.order.map((i)=>i.items))
                 setOid(res.data.order.map((i)=>i._id))
+                setLoading(false)
                 })
             message.info(res.data.message)
           })
@@ -29,13 +31,19 @@ export default function Placeorder() {
         })
     }
     useEffect(()=>{
+        setTimeout(()=>{
+          setLoading(true)
+        },7000)
         axios.post("https://backend-kdfp.onrender.com/",{t:localStorage.getItem('token')})
         .then(res=>{
           if(res.data.valid){
           axios.post('https://backend-kdfp.onrender.com/orderList',{t:localStorage.getItem('token')})
           .then(res=>{
-            setOrder(res.data.order.map((i)=>i.items))
-            setOid(res.data.order.map((i)=>i._id))
+            setTimeout(()=>{
+              setOrder(res.data.order.map((i)=>i.items))
+              setOid(res.data.order.map((i)=>i._id))
+            },4000)
+            
           })
         }else{
           message.info("Login to Continue")
@@ -47,7 +55,10 @@ export default function Placeorder() {
   
   return (
         <div>
-        {order.length===0 ?
+        {loading?
+          <LoadingComponent/>
+        : 
+        order.length===0? 
         (<div>
             <p>No Products Selected</p>
             <div>
