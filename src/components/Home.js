@@ -8,7 +8,7 @@ function Home() {
   const [jsonData, setJsonData] = useState([]);
   const [value,setValue] = useState("");
   const [cart, setCart] = useState([]);
-  const [load,setLoad] = useState(false)
+  const [load,setLoad] = useState(true)
   const navigate = useNavigate()
   const addToCart = (product) => {
      product.qty = product.qty+1
@@ -37,14 +37,11 @@ function Home() {
   
 
   useEffect(() => {
-    setLoad(true)
-    setTimeout(()=>{
-      setLoad(false);
-    },4000)
     axios.get("https://backend-kdfp.onrender.com/products")
       .then((response) => {
         const data = response.data;
         setJsonData(data);
+        setLoad(false)
       })
       .catch((error) => {
         console.error('Error fetching file:', error);
@@ -86,7 +83,7 @@ useEffect(()=>{
       </div>
       <div><input type='button' value="Cart" onClick={showcart}/></div>
       
-      {load?<LoadingComponent/>:jsonData!==null? (
+      {load?<LoadingComponent/>:
             value?(
             <div>
               <ul  className='product-container'>
@@ -128,9 +125,7 @@ useEffect(()=>{
             </ul>
             </div>
            )
-      ) : (
-        <LoadingComponent/>
-      )}
+      }
     </div>
 
   );
