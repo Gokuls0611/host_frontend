@@ -2,17 +2,20 @@
 import React, { useEffect ,useState} from 'react';
 import axios from 'axios';
 import LoadingComponent from './LoadingComponent';
+import {message} from 'antd'
+import './cart.css'
+import { useNavigate, NavLink } from 'react-router-dom';
 
 function Cart() {
   const [cart, setCart] = useState([]);
   const [cost,setCost] = useState([]);
   const [loading,setLoading] = useState(false)
-
+  const navigate = useNavigate()
   useEffect(()=>{
     const c = sessionStorage.getItem('cart')
     const par = JSON.parse(c)
     setCart(par)
-    axios.get("https://wild-teal-basket-clam-fez.cyclic.cloud/products")
+    axios.get("http://localhost:5000/products")
       .then((response) => {
         const data = response.data.map(item => ({ id: item.id, price: item.price }))
         setCost(data)
@@ -22,13 +25,12 @@ function Cart() {
       });  
       setTimeout(()=>{
         setLoading(true)
-      },2000)
+      },1000)
   },[])
 
   const addToCart=(product)=>{
       product.quantity =product.quantity+1
       const priceid = cost.filter((item)=>item.id===product.id)
-      console.log("price",priceid[0].price)
       const cp = (product.quantity)*priceid[0].price
       setCart(cart.map((item)=>item.id === product.id ? { ...item,name:item.name, quantity:product.quantity ,price:cp} : item))
       
@@ -42,36 +44,80 @@ function Cart() {
         : item
     );
     setCart( updatedCart.filter((item) => item.quantity > 0));
-    console.log("Homecart",cart)
     
   };
 
   useEffect(()=>{
     sessionStorage.setItem("cart",JSON.stringify(cart))
   })
-console.log("cart",cart)
+
+const grandTotal = cart.reduce(
+  (total, item) => total +item.price,
+  0
+);
+
+const placeorder=()=>(
+    axios.post("https://wild-teal-basket-clam-fez.cyclic.cloud/",{t:localStorage.getItem('token')})
+    .then(res=>{
+      if(res.data.valid){
+      axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/placeorders',{cart:cart,t:localStorage.getItem('token')})
+      .then(res=>{
+        message.info(res.data.message)
+        navigate('/')
+      })
+      setCart([]);
+    }else{
+      message.info("Login to Continue")
+      navigate('/login')
+    }
+    })
+    
+)
+
   return (
     <div>
       <h1>Cart</h1>
       {loading?(
         cart.length===0?
-        (<p>No Products Selected</p>)
+        (<div>
+          <p>No Products Selected</p>
+          <div>
+          <footer><NavLink to='/'>Return to HomePage</NavLink></footer>
+          </div>
+          </div>
+        )
         :
-        <ul>
+        <div className='cart_container'>
+          <table className='layout'>
+            <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+          <tbody>
         {cart.map((item,index) => (
-          <div key={index}>
-            <p>{item.name}</p>
-            <p>{item.quantity}</p>
-            <p>{item.price}</p>
-            <p className='item-count'>
+          <tr key={index}>
+            <td>{item.name}</td>
+            <td>
+            <p className='cart_item_count'>
             <input type="submit" value="+" onClick={() => addToCart(item)}/>
             {item.quantity}
             <input type="submit" value="-" onClick={() => removeFromCart(item)}/>
-            </p>
-          </div> 
+            </p> 
+            </td>
+            <td>{item.price}</td>
+          </tr>
           ))
         }
-      </ul>
+        </tbody>
+        </table>
+          <div className='total'>
+          Total:{grandTotal}
+          </div>
+          <button className='placeOrder' onClick={placeorder}>Place Order</button>
+          </div>
       ):(<LoadingComponent/>) 
     }
     </div>

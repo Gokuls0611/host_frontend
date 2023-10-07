@@ -29,7 +29,7 @@ form{
     }
   }
 
-form input[type=submit]{
+form input[type=submit],form button{
     font-weight: bold;
     width:100px;
     padding: 5px;
@@ -39,7 +39,7 @@ form input[type=submit]{
     border:none;
     text-align: center;
 }
-input[type=submit]:hover{
+input[type=submit]:hover,form button:hover{
     color:#7600dc;
     background-color:white;
 }
@@ -131,14 +131,11 @@ input::placeholder{
   
 
   /* navbar page */
-
 .Nav{
     width:500px;
     display: inline-grid;
     row-gap: 0px;
     grid-template-columns: 1fr 1fr;
-    
-
 }
 .nav-link {
     color: white;
@@ -319,15 +316,15 @@ input[value="+"],input[value="-"]{
   .product{
     width:100%;
     display: block;
-    max-width: calc(100% - 90px); 
+    max-width:350px; 
   }
   .product-container{
-    display: inline-block;
-    width:88%
+    display: inline-flex;
+    
   }
   img{
     height:200px;
-    width:200px;
+    width:300px;
   }
   .home-search{
     display: inline-block;
@@ -335,3 +332,4 @@ input[value="+"],input[value="-"]{
   } 
   
 }
+

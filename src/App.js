@@ -5,8 +5,7 @@ import {Routes,Route} from 'react-router-dom';
 import Menu from './components/Menu';
 import Home from './components/Home';
 import ForgotPassword from './components/ForgotPassword';
-import About from './components/About';
-import Service from './components/Service';
+import About from './components/About';;
 import  Cart  from './components/Cart';
 import Pagenotfound from './components/Pagenotfound';
 import Contact from './components/Contact';
@@ -22,7 +21,6 @@ function App() {
       <Route path='/register' element= {<Register/>}></Route>
       <Route path='/ForgotPassword' element={<ForgotPassword/>}></Route>
       <Route path='/about' element = {<About/>}></Route>
-      <Route path='/services' element = {<Service/>}></Route>
       <Route path='/contact' element = {<Contact/>}></Route>
       <Route path="*" element = {<Pagenotfound/>}></Route>
       <Route path='/cart'element={<Cart/>}></Route>

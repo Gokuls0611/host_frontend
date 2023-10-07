@@ -11,7 +11,6 @@ export default function ForgotPassword() {
       email:"",
       password:"",
       otp:"",
-      votp:"",
       retype:""
     }
   )
@@ -59,20 +58,13 @@ export default function ForgotPassword() {
 }
 
 
-const getotp = (e) => {
+const getotp = async(e) =>{
   e.preventDefault()
-      axios
-      .post('https://proud-puce-springbok.cyclic.app/forgotPassword',{email})
-      .then( res => {
+      await axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/forgotPassword',{email})
+      .then(res => {
           if(res.data.b){
           message.info(res.data.message)
-          setDisplay({
-            e:!display.e,o:!display.o})
-            setUser({
-              ...user,
-              votp:res.data.otp
-            })
-            time();
+          setDisplay({e:!display.e,o:!display.o})
           }
           else{
             message.error(res.data.message)
@@ -80,21 +72,21 @@ const getotp = (e) => {
       })
 }
 
-const time=()=>{setTimeout(()=>{
-  setUser({...user,votp:""})
-},10000)}
 
 const verify = (e) => {
   e.preventDefault()
-      if(parseInt(votp) === parseInt(otp)){
-        message.success("OTP verified Successfully")
-        setDisplay({o:!display.o,p:!display.p})
-      } 
-      else{
-        message.error("Invalid or Expired OTP")
-      }
+      axios.post("https://wild-teal-basket-clam-fez.cyclic.cloud/verifyotp",{email:email,otp:otp})
+      .then((res)=>{
+        if(res.data.verify){
+          message.success(res.data.message)
+          setDisplay({o:!display.o,p:!display.p})
+        }
+        else{
+          message.info(res.data.message)
+        }
+      })
 }
-  const { email, password, retype ,otp ,votp} = user
+  const { email, password, retype ,otp} = user
   
     return (
     <div>
