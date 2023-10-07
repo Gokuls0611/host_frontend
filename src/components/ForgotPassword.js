@@ -60,7 +60,7 @@ export default function ForgotPassword() {
 
 const getotp = async(e) =>{
   e.preventDefault()
-      await axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/forgotPassword',{email})
+      await axios.post('https://backend-kdfp.onrender.com/forgotPassword',{email})
       .then(res => {
           if(res.data.b){
           message.info(res.data.message)
@@ -75,7 +75,7 @@ const getotp = async(e) =>{
 
 const verify = (e) => {
   e.preventDefault()
-      axios.post("https://wild-teal-basket-clam-fez.cyclic.cloud/verifyotp",{email:email,otp:otp})
+      axios.post("https://backend-kdfp.onrender.com/verifyotp",{email:email,otp:otp})
       .then((res)=>{
         if(res.data.verify){
           message.success(res.data.message)

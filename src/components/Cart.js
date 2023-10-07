@@ -15,7 +15,7 @@ function Cart() {
     const c = sessionStorage.getItem('cart')
     const par = JSON.parse(c)
     setCart(par)
-    axios.get("http://localhost:5000/products")
+    axios.get("https://backend-kdfp.onrender.com/products")
       .then((response) => {
         const data = response.data.map(item => ({ id: item.id, price: item.price }))
         setCost(data)
@@ -57,10 +57,10 @@ const grandTotal = cart.reduce(
 );
 
 const placeorder=()=>(
-    axios.post("https://wild-teal-basket-clam-fez.cyclic.cloud/",{t:localStorage.getItem('token')})
+    axios.post("https://backend-kdfp.onrender.com/",{t:localStorage.getItem('token')})
     .then(res=>{
       if(res.data.valid){
-      axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/placeorders',{cart:cart,t:localStorage.getItem('token')})
+      axios.post('https://backend-kdfp.onrender.com/placeorders',{cart:cart,t:localStorage.getItem('token')})
       .then(res=>{
         message.info(res.data.message)
         navigate('/')
