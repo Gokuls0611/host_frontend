@@ -31,19 +31,14 @@ export default function Placeorder() {
         })
     }
     useEffect(()=>{
-        setTimeout(()=>{
-          setLoading(true)
-        },7000)
         axios.post("https://backend-kdfp.onrender.com/",{t:localStorage.getItem('token')})
         .then(res=>{
           if(res.data.valid){
           axios.post('https://backend-kdfp.onrender.com/orderList',{t:localStorage.getItem('token')})
           .then(res=>{
-            setTimeout(()=>{
               setOrder(res.data.order.map((i)=>i.items))
               setOid(res.data.order.map((i)=>i._id))
-            },4000)
-            
+              setLoading(false)
           })
         }else{
           message.info("Login to Continue")
