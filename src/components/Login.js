@@ -20,7 +20,7 @@ function Login() {
       width={100}
     />
     },4000)
-    axios.get('https://wild-teal-basket-clam-fez.cyclic.cloud/')
+    axios.post('https://backend-kdfp.onrender.com/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
         navigate('/')
@@ -44,7 +44,7 @@ function Login() {
     
     e.preventDefault();
     //console.log(user)
-    axios.post('https://proud-puce-springbok.cyclic.app/login',user)
+    axios.post('https://backend-kdfp.onrender.com/login',user)
       .then(res => {
         if (res.data.Login) {
           localStorage.setItem("token",res.data.token)

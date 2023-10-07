@@ -9,9 +9,9 @@ export default function Menu() {
   const [auth,setAuth] = useState(false)
   const navigate = useNavigate()
     useEffect(()=>{
-      axios.get('https://wild-teal-basket-clam-fez.cyclic.cloud/')
+      axios.post('https://backend-kdfp.onrender.com/',{t:localStorage.getItem("token")})
       .then(res=>{
-        if(res.data.valid){
+        if(res.data.valid && localStorage.getItem('token')){
             setAuth(res.data.valid)
         }
         else{
@@ -22,7 +22,7 @@ export default function Menu() {
     axios.defaults.withCredentials=true
 
     const logout =()=>{
-      axios.get('https://wild-teal-basket-clam-fez.cyclic.cloud/logout')
+      axios.get('https://backend-kdfp.onrender.com/logout')
       .then(res=>{
           navigate('/')
           message.info(res.data.message)

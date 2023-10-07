@@ -41,7 +41,7 @@ export default function ForgotPassword() {
     if((password === retype)){
 
         axios
-        .post('https://wild-teal-basket-clam-fez.cyclic.cloud/setPassword',{email,password})
+        .post('https://backend-kdfp.onrender.com/setPassword',{email,password})
         .then( res => {
             message.info(res.data.message)
             navigate('/')

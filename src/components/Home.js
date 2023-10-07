@@ -8,6 +8,7 @@ function Home() {
   const [jsonData, setJsonData] = useState([]);
   const [value,setValue] = useState("");
   const [cart, setCart] = useState([]);
+  const [load,setLoad] = useState(false)
   const navigate = useNavigate()
   const addToCart = (product) => {
      product.qty = product.qty+1
@@ -36,7 +37,11 @@ function Home() {
   
 
   useEffect(() => {
-    axios.get("https://wild-teal-basket-clam-fez.cyclic.cloud/products")
+    setLoad(true)
+    setTimeout(()=>{
+      setLoad(false);
+    },4000)
+    axios.get("https://backend-kdfp.onrender.com/products")
       .then((response) => {
         const data = response.data;
         setJsonData(data);
@@ -81,7 +86,7 @@ useEffect(()=>{
       </div>
       <div><input type='button' value="Cart" onClick={showcart}/></div>
       
-      {jsonData!==null? (
+      {load?<LoadingComponent/>:jsonData!==null? (
             value?(
             <div>
               <ul  className='product-container'>

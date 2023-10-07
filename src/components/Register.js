@@ -36,7 +36,7 @@ export default function Register() {
     if( name && email && password && (password === retype)){
 
         axios
-        .post('https://wild-teal-basket-clam-fez.cyclic.cloud/register',user)
+        .post('https://backend-kdfp.onrender.com/register',user)
         .then( res => {
           if(!res.data.Login){
             message.success(res.data.message)
