@@ -20,7 +20,7 @@ function Login() {
       width={100}
     />
     },4000)
-    axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/',{t:localStorage.getItem("token")})
+    axios.post('https://backend-kdfp.onrender.com/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
         navigate('/')
@@ -44,7 +44,7 @@ function Login() {
     
     e.preventDefault();
     //console.log(user)
-    axios.post('https://wild-teal-basket-clam-fez.cyclic.cloud/login',user)
+    axios.post('https://backend-kdfp.onrender.com/login',user)
       .then(res => {
         if (res.data.Login) {
           localStorage.setItem("token",res.data.token)
