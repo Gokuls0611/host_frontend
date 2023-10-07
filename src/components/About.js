@@ -22,8 +22,6 @@ export default function About() {
         if(!res.data.valid){
           message.info(res.data.message);
         }
-        console.log(res.data.valid)
-        console.log(valid, "res");
       })
       .catch(err => {
         console.log(err);
