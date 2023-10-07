@@ -41,7 +41,7 @@ function Home() {
     setTimeout(()=>{
       setLoad(false);
     },4000)
-    axios.get("https://wild-teal-basket-clam-fez.cyclic.cloud/products")
+    axios.get("https://backend-kdfp.onrender.com/products")
       .then((response) => {
         const data = response.data;
         setJsonData(data);
