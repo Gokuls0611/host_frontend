@@ -60,12 +60,12 @@ const placeorder=()=>(
     axios.post("https://backend-kdfp.onrender.com/",{t:localStorage.getItem('token')})
     .then(res=>{
       if(res.data.valid){
-      axios.post('https://backend-kdfp.onrender.com/placeorders',{cart:cart,t:localStorage.getItem('token')})
-      .then(res=>{
-        message.info(res.data.message)
         navigate('/')
-      })
-      setCart([]);
+        axios.post('https://backend-kdfp.onrender.com/placeorders',{cart:cart,t:localStorage.getItem('token')})
+        .then(res=>{
+          message.info(res.data.message)
+        })
+        setCart([]);
     }else{
       message.info("Login to Continue")
       navigate('/login')
