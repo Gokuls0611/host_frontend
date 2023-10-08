@@ -4,6 +4,7 @@ import {Navbar} from './Navbar'
 import { NavLink ,useNavigate} from 'react-router-dom'
 import {TailSpin} from 'react-loader-spinner'
 import {message} from 'antd'
+import ButtonLoad from './ButtonLoad'
 import './style.css'
 function Login() {
   const navigate = useNavigate()
