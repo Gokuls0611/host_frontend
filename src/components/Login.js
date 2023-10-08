@@ -11,7 +11,7 @@ function Login() {
     email:"",
     password:"",
   });
-
+  const [load,setLoad] = useState(false)
    useEffect(() => {
      setTimeout(()=>{
       <TailSpin
@@ -41,9 +41,8 @@ function Login() {
     })
   };
   const handleSubmit = (e) => {
-    
+    setLoad(true)
     e.preventDefault();
-    //console.log(user)
     axios.post('https://backend-kdfp.onrender.com/login',user)
       .then(res => {
         if (res.data.Login) {
@@ -54,6 +53,7 @@ function Login() {
         else{
           message.error(res.data.message)
         }
+        setLoad(false)
       }
       )
   };
@@ -71,7 +71,9 @@ function Login() {
           <input name='password' type='password' value={password} onChange={handleChange} placeholder='Enter Password' />
         </div>
         <div>
-          <input type='submit' value="Login"  onClick={handleSubmit} />
+          <button type='submit' onClick={handleSubmit} disabled={load}>
+            {load?<ButtonLoad/>:<span>Login</span>}
+          </button>
         </div>
         <div className='co1'>
         <NavLink style={({color:'azure'})} to='/ForgotPassword'>Forgot Password?</NavLink>

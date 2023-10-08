@@ -29,6 +29,7 @@ export default function Menu() {
       })
       setAuth(!auth)
       localStorage.clear('token')
+      sessionStorage.setItem('cart',[])
     }
   return (
     <div>

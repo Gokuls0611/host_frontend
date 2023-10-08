@@ -3,6 +3,8 @@ import axios from 'axios'
 import {Navbar} from './Navbar'
 import { message } from 'antd'
 import {  useNavigate } from 'react-router-dom'
+import ButtonLoad from './ButtonLoad'
+import './style.css'
 
 export default function Register() {
   const navigate = useNavigate()
@@ -14,7 +16,7 @@ export default function Register() {
       retype:"",
     }
   )
-
+  const[load,setLoad] = useState(false)
   const change = e => {
     const { name, value } = e.target
     setUser({
@@ -26,8 +28,11 @@ export default function Register() {
   const uppercaseRegex = /[A-Z]/;
   const lowercaseRegex = /[a-z]/;
   const numberRegex = /[0-9]/;
+
+
   const submit = (e) => {
     e.preventDefault()
+    setLoad(true)
     if(password.length >= 8 &&
       uppercaseRegex.test(password) &&
       lowercaseRegex.test(password) &&
@@ -45,11 +50,13 @@ export default function Register() {
             message.info(res.data.message)
           }
             navigate('/login')
+            setLoad(false)
 
         })
         
     } else {
         alert("invalid input")
+        setLoad(false)
     }
     
   }
@@ -73,7 +80,9 @@ export default function Register() {
         <input name='retype' type='password' value={retype} onChange={change} placeholder='Retype Password'></input>
         </div>
         <div>
-        <input  type='submit' value='Sign Up' onClick={submit}></input>
+        <button type='submit' onClick={submit} disabled={load}>
+            {load?<ButtonLoad/>:<span>Sign Up</span>}
+          </button>
         </div>
         </form>
     </div>
