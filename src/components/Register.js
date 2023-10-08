@@ -62,6 +62,7 @@ export default function Register() {
   }
   else{
     message.warning("Enter a Strong Password")
+    setLoad(false)
   }
 }
   const { name, email, password, retype } = user
