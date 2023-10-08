@@ -1,86 +1,96 @@
 header{
-    margin-top: 200px;
-    padding: 10px 265px 10px 35px;
-    width:200px;
-    text-align: left;
-    background-color: #7600dc;
-    color:azure;
-    display:inline-grid ;
+  margin-top: 200px;
+  padding: 10px 265px 10px 35px;
+  width:200px;
+  text-align: left;
+  background-color: #7600dc;
+  color:azure;
+  display:inline-grid ;
 }
 @media (max-width: 600px) {
-    header {
-    margin-top: 100px;
-      width: 90%; /* Adjust width for even smaller screens */
-      padding: 15px; /* Reduce padding for smaller screens */
-    }
+  header {
+  margin-top: 100px;
+    width: 90%; /* Adjust width for even smaller screens */
+    padding: 15px; /* Reduce padding for smaller screens */
   }
+}
 
-  form{
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(11, 11, 11);
-    background-repeat: no-repeat;
-    width:500px;
+form{
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(11, 11, 11);
+  background-repeat: no-repeat;
+  width:500px;
 }
 @media (max-width: 600px) {
-    form {
-      width: 90%; /* Adjust width for even smaller screens */
-      padding: 15px; /* Reduce padding for smaller screens */
-    }
+  form {
+    width: 90%; /* Adjust width for even smaller screens */
+    padding: 15px; /* Reduce padding for smaller screens */
   }
+}
 
 form input[type=submit]{
-    font-weight: bold;
-    width:100px;
-    padding: 5px;
-    background-color: #7600dc;
-    color:azure;
-    outline: none;
-    border:none;
-    text-align: center;
+  font-weight: bold;
+  width:200px;
+  padding: 5px;
+  background-color: #7600dc;
+  color:azure;
+  outline: none;
+  border:none;
+  text-align: center;
 }
 input[type=submit]:hover{
-    color:#7600dc;
-    background-color:white;
+  color:#7600dc;
+  background-color:white;
 }
+
+.load_button{
+margin: 0px 40%;
+text-align: center;
+}
+
+form button:disabled{ 
+pointer-events: none;
+}
+
 form input{
-    outline:none;
-    width: 250px;
-    border-color: whitesmoke;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    background-color: white;
-    
+  outline:none;
+  width: 250px;
+  border-color: whitesmoke;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  background-color: white;
+  
 }
 input[type=text],input[type=email],input[type=password]{
-    padding: 5px;
-    border: none;
-    border-bottom: solid azure 1px;
-    background-color:rgb(11, 11, 11);
-    color:azure
-    
+  padding: 5px;
+  border: none;
+  border-bottom: solid azure 1px;
+  background-color:rgb(11, 11, 11);
+  color:azure
+  
 }
 input::placeholder{
-    color:azure;
-    font-weight: lighter;
+  color:azure;
+  font-weight: lighter;
 }
 /* Default styles */
 .container {
-    width: 100%;
-    display: inline-grid;
-    justify-content: center;
-    align-items: center;
-    max-width: 400px; /* Set a maximum width for better readability on smaller screens */
-    margin: 0 auto ;
-    padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px; /* Set a maximum width for better readability on smaller screens */
+  margin: 0 auto ;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+  .container {
+    width: 90%; /* Adjust width for even smaller screens */
+    padding: 15px; /* Reduce padding for smaller screens */
   }
-  
-  /* Media query for mobile devices */
-  @media (max-width: 600px) {
-    .container {
-      width: 90%; /* Adjust width for even smaller screens */
-      padding: 15px; /* Reduce padding for smaller screens */
-    }
-  }
+}

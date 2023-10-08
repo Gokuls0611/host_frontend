@@ -2,10 +2,13 @@ import React,{useState} from 'react'
 import axios from 'axios'   
 import { message } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import ButtonLoad from './ButtonLoad'
 import './fp.css'
 
 export default function ForgotPassword() {
     const navigate = useNavigate()
+    const [load,setLoad] = useState(false)
+
   const[user,setUser] = useState(
     {
       email:"",
@@ -31,8 +34,10 @@ export default function ForgotPassword() {
   const uppercaseRegex = /[A-Z]/;
   const lowercaseRegex = /[a-z]/;
   const numberRegex = /[0-9]/;
+
   const submit = (e) => {
     e.preventDefault()
+    setLoad(true)
     if(password.length >= 8 &&
       uppercaseRegex.test(password) &&
       lowercaseRegex.test(password) &&
@@ -44,22 +49,26 @@ export default function ForgotPassword() {
         .post('https://backend-kdfp.onrender.com/setPassword',{email,password})
         .then( res => {
             message.info(res.data.message)
-            navigate('/')
+            navigate('/login')
+            setLoad(false)
         })
         
     } else {
-        message.error("Wrong Password")
+        message.error("Mismatch Password")
+        setLoad(false)
     }
     
   }
   else{
     message.warning("Enter a Strong Password")
+    setLoad(false)
   }
 }
 
 
 const getotp = async(e) =>{
   e.preventDefault()
+  setLoad(true)
       await axios.post('https://backend-kdfp.onrender.com/forgotPassword',{email})
       .then(res => {
           if(res.data.b){
@@ -69,12 +78,14 @@ const getotp = async(e) =>{
           else{
             message.error(res.data.message)
           }
+          setLoad(false)
       })
 }
 
 
 const verify = (e) => {
   e.preventDefault()
+  setLoad(true)
       axios.post("https://backend-kdfp.onrender.com/verifyotp",{email:email,otp:otp})
       .then((res)=>{
         if(res.data.verify){
@@ -84,6 +95,7 @@ const verify = (e) => {
         else{
           message.info(res.data.message)
         }
+        setLoad(false)
       })
 }
   const { email, password, retype ,otp} = user
