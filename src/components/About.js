@@ -12,9 +12,6 @@ export default function About() {
   const [valid, setValid] = useState(false);
   const [loading,setLoading] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
     const t = localStorage.getItem("token")
     axios.post('https://backend-kdfp.onrender.com/',{t})
       .then(res => {
@@ -22,6 +19,7 @@ export default function About() {
         if(!res.data.valid){
           message.info(res.data.message);
         }
+        setLoading(false)
       })
       .catch(err => {
         console.log(err);
