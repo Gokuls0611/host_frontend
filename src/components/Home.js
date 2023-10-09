@@ -37,7 +37,7 @@ function Home() {
   
 
   useEffect(() => {
-    axios.get("https://backend-kdfp.onrender.com/products")
+    axios.get("https://host-backend.netlify.app/products")
       .then((response) => {
         const data = response.data;
         setJsonData(data);
