@@ -41,7 +41,7 @@ export default function Register() {
     if( name && email && password && (password === retype)){
 
         axios
-        .post('https://backend-kdfp.onrender.com/register',user)
+        .post('https://drab-plum-kangaroo-tutu.cyclic.app/register',user)
         .then( res => {
           if(!res.data.Login){
             message.success(res.data.message)
