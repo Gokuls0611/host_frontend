@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { message } from 'antd';
 import Login from './Login';
 import './style.css';
@@ -15,9 +14,6 @@ export default function About() {
       setLoading(false)
     },1000)
   }, [navigate]);
-
-  axios.defaults.withCredentials = true;
-  
   return (
     
     <div>
