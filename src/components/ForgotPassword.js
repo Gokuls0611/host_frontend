@@ -46,7 +46,7 @@ export default function ForgotPassword() {
     if((password === retype)){
 
         axios
-        .post('https://backend-kdfp.onrender.com/setPassword',{email,password})
+        .post('https://drab-plum-kangaroo-tutu.cyclic.app/setPassword',{email,password})
         .then( res => {
             message.info(res.data.message)
             navigate('/login')
@@ -69,7 +69,7 @@ export default function ForgotPassword() {
 const getotp = async(e) =>{
   e.preventDefault()
   setLoad(true)
-      await axios.post('https://backend-kdfp.onrender.com/forgotPassword',{email})
+      await axios.post('https://host-email.onrender.com/forgotPassword',{email})
       .then(res => {
           if(res.data.b){
           message.info(res.data.message)
@@ -86,7 +86,7 @@ const getotp = async(e) =>{
 const verify = (e) => {
   e.preventDefault()
   setLoad(true)
-      axios.post("https://backend-kdfp.onrender.com/verifyotp",{email:email,otp:otp})
+      axios.post("https://drab-plum-kangaroo-tutu.cyclic.app/verifyotp",{email:email,otp:otp})
       .then((res)=>{
         if(res.data.verify){
           message.success(res.data.message)
@@ -114,7 +114,9 @@ const verify = (e) => {
           <>
           <input name='email' type='email' value={email} onChange={change} placeholder='Enter E-mail'></input>
           <div>
-          <input  type='submit' value='Get OTP' onClick={getotp}></input>
+          <button type='submit' onClick={getotp} disabled={load}>
+            {load?<ButtonLoad/>:<span>Get OTP</span>}
+          </button>
           </div>
           </>
           )
@@ -125,7 +127,9 @@ const verify = (e) => {
               <>
                 <input name='otp' type='text' value={otp} onChange={change} placeholder='Enter OTP'></input>
                 <div>
-                <input  type='submit' value="Submit" onClick={verify}></input>
+                <button type='submit' onClick={verify} disabled={load}>
+                  {load?<ButtonLoad/>:<span>Verify</span>}
+                </button>
                 </div>
               </>
             )
@@ -137,7 +141,9 @@ const verify = (e) => {
                 <input name='password' type='password' value={password} onChange={change} placeholder='Enter Password'></input>
                 <input name='retype' type='password' value={retype} onChange={change} placeholder='Retype Password'></input>
                 <div>
-                <input  type='submit' value='SUBMIT' onClick={submit}></input>
+                <button type='submit' onClick={submit} disabled={load}>
+                  {load?<ButtonLoad/>:<span>SUBMIT</span>}
+                </button>
                 </div>
               </>
             )

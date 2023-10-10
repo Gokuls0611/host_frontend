@@ -12,20 +12,9 @@ export default function About() {
   const [valid, setValid] = useState(false);
   const [loading,setLoading] = useState(true);
   useEffect(() => {
-    const t = localStorage.getItem("token")
-    axios.post('https://backend-kdfp.onrender.com/',{t})
-      .then(res => {
-        setValid(res.data.valid);
-        if(!res.data.valid){
-          message.info(res.data.message);
-        }
+      setTimeout(()=>{
         setLoading(false)
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      },1000)
   }, [navigate,valid]);
 
   axios.defaults.withCredentials = true;
@@ -35,7 +24,7 @@ export default function About() {
     <div>
       {loading? (
         <LoadingComponent/>
-      ) : valid ? (
+      ):(
         <>
         <div className='resume' >
           <div className="photo">
@@ -76,7 +65,7 @@ export default function About() {
         </ul>
         </section>
         </>
-      ) : <Login/>}
+      )}
     </div>
   );
 }

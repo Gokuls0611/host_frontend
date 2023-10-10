@@ -21,7 +21,7 @@ function Login() {
       width={100}
     />
     },4000)
-    axios.post('https://backend-kdfp.onrender.com/',{t:localStorage.getItem("token")})
+    axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
         navigate('/')
@@ -44,7 +44,7 @@ function Login() {
   const handleSubmit = (e) => {
     setLoad(true)
     e.preventDefault();
-    axios.post('https://backend-kdfp.onrender.com/login',user)
+    axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/login',user)
       .then(res => {
         if (res.data.Login) {
           localStorage.setItem("token",res.data.token)

@@ -11,12 +11,12 @@ export default function Placeorder() {
     const [oid,setOid] = useState([])
     const [loading,setLoading] = useState(true)
     const order_delete =(e) =>{
-        axios.post("https://backend-kdfp.onrender.com/",{t:localStorage.getItem('token')})
+        axios.post("https://drab-plum-kangaroo-tutu.cyclic.app/",{t:localStorage.getItem('token')})
         .then(res=>{
           if(res.data.valid){
-          axios.post('https://backend-kdfp.onrender.com/deleteOrder',{t:localStorage.getItem('token'),id:e.target.value})
+          axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/deleteOrder',{t:localStorage.getItem('token'),id:e.target.value})
           .then(res=>{
-            axios.post('https://backend-kdfp.onrender.com/orderList',{t:localStorage.getItem('token')})
+            axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/orderList',{t:localStorage.getItem('token')})
                 .then(res=>{
                 setOrder(res.data.order.map((i)=>i.items))
                 setOid(res.data.order.map((i)=>i._id))
@@ -31,10 +31,10 @@ export default function Placeorder() {
         })
     }
     useEffect(()=>{
-        axios.post("https://backend-kdfp.onrender.com/",{t:localStorage.getItem('token')})
+        axios.post("https://drab-plum-kangaroo-tutu.cyclic.app/",{t:localStorage.getItem('token')})
         .then(res=>{
           if(res.data.valid){
-          axios.post('https://backend-kdfp.onrender.com/orderList',{t:localStorage.getItem('token')})
+          axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/orderList',{t:localStorage.getItem('token')})
           .then(res=>{
               setOrder(res.data.order.map((i)=>i.items))
               setOid(res.data.order.map((i)=>i._id))
