@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { message } from 'antd';
-import Login from './Login';
 import './style.css';
 import LoadingComponent from './LoadingComponent';
 
 export default function About() {
   const navigate = useNavigate();
-  const [valid, setValid] = useState(false);
   const [loading,setLoading] = useState(true);
   useEffect(() => {
       setTimeout(()=>{

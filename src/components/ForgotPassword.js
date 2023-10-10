@@ -66,10 +66,10 @@ export default function ForgotPassword() {
 }
 
 
-const getotp = async(e) =>{
+const getotp = (e) =>{
   e.preventDefault()
   setLoad(true)
-      await axios.post('https://host-email.onrender.com/forgotPassword',{email})
+      axios.post('https://host-email.onrender.com/forgotPassword',{email})
       .then(res => {
           if(res.data.b){
           message.info(res.data.message)
