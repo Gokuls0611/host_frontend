@@ -24,7 +24,7 @@ export default function Menu() {
     const logout =()=>{
       axios.get('https://drab-plum-kangaroo-tutu.cyclic.app/logout')
       .then(res=>{
-          navigate('/')
+          navigate('/login')
           message.info(res.data.message)
       })
       setAuth(!auth)
