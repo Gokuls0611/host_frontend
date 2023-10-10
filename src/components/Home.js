@@ -113,7 +113,7 @@ useEffect(()=>{
                 <div  className='product' key={index}>
                 <p>{item.name}</p>
                 <p><img src={item.imageURL} height="300px" width="300px" alt={item.name} /></p>
-                <p>Price: {item.price}/kg</p>
+                {item.category==='fruits' || item.category==='vegetables'?<p>Price: {item.price}/kg</p>:<p>Price: {item.price}</p>}
                 <p className='item-count'>
                 <input type="submit" value="+" onClick={() => addToCart(item)}/>
                 {cart.find((i)=>i&& i.id===item.id)?cart.find((i)=>i&& i.id===item.id).quantity:0}
