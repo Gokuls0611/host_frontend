@@ -46,7 +46,7 @@ export default function ForgotPassword() {
     if((password === retype)){
 
         axios
-        .post('https://backend-kdfp.onrender.com/setPassword',{email,password})
+        .post('https://drab-plum-kangaroo-tutu.cyclic.app/setPassword',{email,password})
         .then( res => {
             message.info(res.data.message)
             navigate('/login')
@@ -69,7 +69,7 @@ export default function ForgotPassword() {
 const getotp = async(e) =>{
   e.preventDefault()
   setLoad(true)
-      await axios.post('https://backend-kdfp.onrender.com/forgotPassword',{email})
+      await axios.post('https://host-email.onrender.com/forgotPassword',{email})
       .then(res => {
           if(res.data.b){
           message.info(res.data.message)
@@ -86,7 +86,7 @@ const getotp = async(e) =>{
 const verify = (e) => {
   e.preventDefault()
   setLoad(true)
-      axios.post("https://backend-kdfp.onrender.com/verifyotp",{email:email,otp:otp})
+      axios.post("https://drab-plum-kangaroo-tutu.cyclic.app/verifyotp",{email:email,otp:otp})
       .then((res)=>{
         if(res.data.verify){
           message.success(res.data.message)
