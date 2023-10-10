@@ -86,7 +86,7 @@ useEffect(()=>{
       {load?<LoadingComponent/>:
             value?(
             <div>
-              <ul  className='product-container'>
+              <div  className='product-container'>
               {jsonData.map((item, index) => {
                 if((item.name.toLowerCase()).includes(value.toLowerCase())){
                   return(
@@ -105,10 +105,10 @@ useEffect(()=>{
                   return null
                 }   
                   })}
-              </ul>
+              </div>
            </div>):(
             <div>
-            <ul  className='product-container'>
+            <div  className='product-container'>
             {jsonData.map((item, index) =>(
                 <div  className='product' key={index}>
                 <p>{item.name}</p>
@@ -122,7 +122,7 @@ useEffect(()=>{
                 </div>
                 )  
             )}
-            </ul>
+            </div>
             </div>
            )
       }
