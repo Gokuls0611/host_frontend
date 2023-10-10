@@ -11,9 +11,8 @@ export default function About() {
       setTimeout(()=>{
         setLoading(false)
       },1000)
-  }, [navigate,valid]);
+  }, [navigate]);
 
-  axios.defaults.withCredentials = true;
   
   return (
     
