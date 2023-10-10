@@ -283,6 +283,7 @@ display: inline-block;
 .product-container {
   display: inline-flex;
   flex-wrap: wrap;
+  background-color: rgb(140, 173, 164);
   gap: 10px; /* Adjust the gap between products as needed */
   max-width: 100%; /* Ensure products wrap to the next line on smaller screens */
 }
@@ -325,6 +326,7 @@ display: inline-block;
 .product{
   width:100%;
   display: block;
+  background-color: rgb(140, 173, 164);
   max-width:350px; 
 }
 .product-container{
