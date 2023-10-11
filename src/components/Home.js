@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './style.css'
+import carticon from './cart icon.png'
 import LoadingComponent from './LoadingComponent';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ function Home() {
   const [value,setValue] = useState("");
   const [cart, setCart] = useState([]);
   const [load,setLoad] = useState(true)
+  const [options,setOptions] = useState("")
   const navigate = useNavigate()
   const addToCart = (product) => {
      product.qty = product.qty+1
