@@ -70,65 +70,58 @@ useEffect(()=>{
       sessionStorage.setItem("cart",JSON.stringify([]))
     }
   })
+  const D =
+  jsonData
+  .filter((item) =>
+      options===""?item:item.category === options && item.name.toLowerCase().includes(value.toLowerCase())
+  )
+  .map((item, index) => {
+         return (
+        <div className='product' key={index}>
+          <p>{item.name}</p>
+          <p><img src={item.imageURL} height="300px" width="300px" alt={item.name} /></p>
+          {item.category === 'fruits' || item.category === 'vegetables' ? <p>Price: {item.price}/kg</p> : <p>Price: {item.price}</p>}
+          <p className='item-count'>
+            <input type="submit" value="+" onClick={() => addToCart(item)} />
+            {cart.find((i) => i && i.id === item.id) ? cart.find((i) => i && i.id === item.id).quantity : 0}
+            <input type="submit" value="-" onClick={() => removeFromCart(item)} />
+          </p>
+        </div>
+      );
+  });
 
-  const showcart=()=>{
-    navigate('/cart',{state:cart})
-  }
-  return (
-    <div >
-      
-      <div className='home-header'>Demo E-Commerce Website</div>
-      <div>
-        <input  className='home-search' value={value} onChange={(e)=>{setValue(e.target.value)}} placeholder="Search"/>
+const showcart=()=>{
+  navigate('/cart',{state:cart})
+}
+return (
+  <div >
+    
+    <div className='home-header'>Demo E-Commerce Website</div>
+    <div className='searchandcart'>
+      <div className='home-search' >
+        <select  onChange={(e)=>setOptions(e.target.value)}>
+                <option value="">All Products</option>
+                <option value="fruits">Fruits</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="electronics">Electronics</option>
+                <option value="grocery">Grocery</option>
+                <option value="personal care">Health and Personal Care</option>
+        </select>
+       <div> <input value={value} onChange={(e)=>{setValue(e.target.value)}} placeholder="Search"/></div>
+        </div>
+      <div><img src={carticon} style={{cursor:'pointer'}}height='20px' width='20px'title='Cart' onClick={showcart} alt="cart"></img></div>
       </div>
-      <div><input type='button' value="Cart" onClick={showcart}/></div>
-      
-      {load?<LoadingComponent/>:
-            value?(
-            <div>
-              <div  className='product-container'>
-              {jsonData.map((item, index) => {
-                if((item.name.toLowerCase()).includes(value.toLowerCase())){
-                  return(
-                <div  className='product' key={index}>
-                <p>{item.name}</p>
-                <p><img src={item.imageURL} height="300px" width="300px" alt={item.name} /></p>
-                {item.category==='fruits' || item.category==='vegetables'?<p>Price: {item.price}/kg</p>:<p>Price: {item.price}</p>}
-                <p className='item-count'>
-                <input type="submit" value="+" onClick={() => addToCart(item)}/>
-                {cart.find((i)=>i&& i.id===item.id)?cart.find((i)=>i&& i.id===item.id).quantity:0}
-                <input type="submit" value="-" onClick={() => removeFromCart(item)}/>
-                </p>
-                </div>
-                )
-                }else{
-                  return null
-                }   
-                  })}
-              </div>
-           </div>):(
-            <div>
-            <div  className='product-container'>
-            {jsonData.map((item, index) =>(
-                <div  className='product' key={index}>
-                <p>{item.name}</p>
-                <p><img src={item.imageURL} height="300px" width="300px" alt={item.name} /></p>
-                {item.category==='fruits' || item.category==='vegetables'?<p>Price: {item.price}/kg</p>:<p>Price: {item.price}</p>}
-                <p className='item-count'>
-                <input type="submit" value="+" onClick={() => addToCart(item)}/>
-                {cart.find((i)=>i&& i.id===item.id)?cart.find((i)=>i&& i.id===item.id).quantity:0}
-                <input type="submit" value="-" onClick={() => removeFromCart(item)}/>
-                </p>
-                </div>
-                )  
-            )}
-            </div>
-            </div>
-           )
-      }
-    </div>
+    {load && jsonData===null?<LoadingComponent/>:jsonData!==null? (
+          <div className='product-container'>
+            {D.length===0?<>No Products Found</>:D}
+          </div>
+         
+    ) : (
+      <LoadingComponent/>
+    )}
+  </div>
 
-  );
+);
 }
 
 
