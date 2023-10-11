@@ -114,7 +114,7 @@ return (
       <div><img src={carticon} style={{cursor:'pointer'}}height='20px' width='20px'title='Cart' onClick={showcart} alt="cart"></img></div>
       </div>
       <div>
-    {load && jsonData===null?<LoadingComponent/>:jsonData!==null? (
+    {load?<LoadingComponent/>:jsonData!==null? (
           <div className='product-container'>
             {D.length===0?<div>No Products Found</div>:D}
           </div>
