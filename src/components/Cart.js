@@ -64,6 +64,7 @@ const placeorder=()=>(
         axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/placeorders',{cart:cart,t:localStorage.getItem('token')})
         .then(res=>{
           message.info(res.data.message)
+          localStorage.setItem(cart,JSON.stringify([]))
         })
         setCart([]);
     }else{
