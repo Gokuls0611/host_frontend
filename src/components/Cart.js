@@ -102,9 +102,9 @@ const placeorder=()=>(
             <td>{item.name}</td>
             <td>
             <p className='cart_item_count'>
-            <input type="submit" value="+" onClick={() => addToCart(item)}/>
-            {item.quantity}
             <input type="submit" value="-" onClick={() => removeFromCart(item)}/>
+            {item.quantity}
+            <input type="submit" value="+" onClick={() => addToCart(item)}/>
             </p> 
             </td>
             <td>{item.price}</td>
