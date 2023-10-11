@@ -84,9 +84,9 @@ useEffect(()=>{
             <p><img src={item.imageURL} height="300px" width="300px" alt={item.name} /></p>
             {item.category === 'fruits' || item.category === 'vegetables' ? <p>Price: {item.price}/kg</p> : <p>Price: {item.price}</p>}
             <p className='item-count'>
-              <input type="submit" value="+" onClick={() => addToCart(item)} />
-              {cart.find((i) => i && i.id === item.id) ? cart.find((i) => i && i.id === item.id).quantity : 0}
               <input type="submit" value="-" onClick={() => removeFromCart(item)} />
+              {cart.find((i) => i && i.id === item.id) ? cart.find((i) => i && i.id === item.id).quantity : 0}
+              <input type="submit" value="+" onClick={() => addToCart(item)} />
             </p>
           </div>
         );
