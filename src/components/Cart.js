@@ -64,7 +64,7 @@ const placeorder=()=>(
           message.info(res.data.message)
           
         })
-        localStorage.setItem(cart,JSON.stringify([]))
+        sessionStorage.setItem(cart,JSON.stringify([]))
         setCart([]);
     }else{
       message.info("Login to Continue")
