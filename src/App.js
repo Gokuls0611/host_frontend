@@ -17,7 +17,7 @@ import './components/style.css'
 function App() {
   return (
     <div className="App">
-      <div><Menu/></div>
+      <div className='menu'><Menu/></div>
       <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/login' element={<Login/>}></Route>

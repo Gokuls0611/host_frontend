@@ -63,7 +63,7 @@ function Login() {
     <div>
       <header>USER VIEWS
       </header>
-      <div>
+        <div>
         <Navbar />
         </div>
       <form>

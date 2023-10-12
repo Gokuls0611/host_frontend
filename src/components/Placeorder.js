@@ -49,7 +49,8 @@ export default function Placeorder() {
 
   
   return (
-        <div>
+    <div className='mtop'>
+    <p><h1>Orders Placed</h1></p>
         {loading?
           <LoadingComponent/>
         : 

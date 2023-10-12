@@ -47,9 +47,7 @@ function Cart() {
     
   };
 
-  useEffect(()=>{
-    sessionStorage.setItem("cart",JSON.stringify(cart))
-  })
+ 
 
 const grandTotal = cart.reduce(
   (total, item) => total +item.price,
@@ -64,8 +62,9 @@ const placeorder=()=>(
         axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/placeorders',{cart:cart,t:localStorage.getItem('token')})
         .then(res=>{
           message.info(res.data.message)
-          localStorage.setItem(cart,JSON.stringify([]))
+          
         })
+        localStorage.setItem(cart,JSON.stringify([]))
         setCart([]);
     }else{
       message.info("Login to Continue")
@@ -75,8 +74,12 @@ const placeorder=()=>(
     
 )
 
+useEffect(()=>{
+  sessionStorage.setItem("cart",JSON.stringify(cart))
+})
+
   return (
-    <div>
+    <div className='mtop'>
       <h1>Cart</h1>
       {loading?(
         cart.length===0?

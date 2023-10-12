@@ -32,22 +32,21 @@ export default function Menu() {
       sessionStorage.setItem('cart',JSON.stringify([]))
     }
   return (
-    <div>
-        <div className="navbar">
-        <ul className="navbar-links">
-            <li><NavLink to='/' className="navbar-link">Home</NavLink></li>
-            <li><NavLink to='/orders' className="navbar-link">Orders</NavLink></li>
-            <li><NavLink to ='/about' className="navbar-link">About</NavLink></li>
-            <li><NavLink to='/contact' className="navbar-link">Contact</NavLink></li>
-        </ul>
-        {
-          auth?
-        <div onClick={logout} className="navbar-link">Logout</div>
-        :
-        <NavLink to='/login' className="navbar-link">Login</NavLink>
-        }
-    </div>
-    </div>
-    
+          <div>
+          <div className="navbar">
+          <ul className="navbar-links">
+              <li><NavLink to='/' className="navbar-link">Home</NavLink></li>
+              <li><NavLink to ='/about' className="navbar-link">About</NavLink></li>
+              <li><NavLink to='/orders' className="navbar-link">Orders</NavLink></li>
+              <li><NavLink to='/contact' className="navbar-link">Contact</NavLink></li>
+          </ul>
+          {
+            auth?
+          <div onClick={logout} className="navbar-link">Logout</div>
+          :
+          <NavLink to='/login' className="navbar-link">Login</NavLink>
+          }
+        </div>
+        </div>
   )
 }

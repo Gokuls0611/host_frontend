@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export const Navbar =()=>{
     return (
-        <div className="Nav">
+        <div className="loginsignup">
             <NavLink className="nav-link" activeclassname="active" to="/login">Login</NavLink>
             <NavLink className="nav-link" activeclassname="active" to="/register">Sign Up</NavLink>
         </div>
