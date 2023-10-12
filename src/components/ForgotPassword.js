@@ -94,7 +94,7 @@ const getotp = (e) =>{
       }
       setLoading(false)
     })
-  })
+  },[navigate])
 
 const verify = (e) => {
   e.preventDefault()
