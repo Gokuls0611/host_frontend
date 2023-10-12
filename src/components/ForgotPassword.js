@@ -90,7 +90,7 @@ const getotp = (e) =>{
         navigate('/')
       }
       else{
-        navigate('/FogotPassword')
+        navigate('/ForgotPassword')
       }
       setLoading(false)
     })
