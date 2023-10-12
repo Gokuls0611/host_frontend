@@ -84,7 +84,7 @@ const getotp = (e) =>{
 }
   useEffect(()=>{
     setLoading(true)
-    axios.post('http://localhost:5000/',{t:localStorage.getItem("token")})
+    axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
         navigate('/')
