@@ -1,14 +1,15 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import axios from 'axios'   
 import { message } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import ButtonLoad from './ButtonLoad'
 import './fp.css'
+import LoadingComponent from './LoadingComponent'
 
 export default function ForgotPassword() {
     const navigate = useNavigate()
     const [load,setLoad] = useState(false)
-
+    const [loading,setLoading] = useState(false)
   const[user,setUser] = useState(
     {
       email:"",
@@ -81,7 +82,19 @@ const getotp = (e) =>{
           setLoad(false)
       })
 }
-
+  useEffect(()=>{
+    setLoading(true)
+    axios.post('http://localhost:5000/',{t:localStorage.getItem("token")})
+    .then(res=>{
+      if(res.data.valid){
+        navigate('/')
+      }
+      else{
+        navigate('/FogotPassword')
+      }
+      setLoading(false)
+    })
+  })
 
 const verify = (e) => {
   e.preventDefault()
@@ -102,6 +115,8 @@ const verify = (e) => {
   
     return (
     <div>
+      {loading?<LoadingComponent/>:
+      (<div>
         <header>
             Set Password
         </header>
@@ -152,6 +167,8 @@ const verify = (e) => {
         </>
         </form>
         </div>
+        </div>
+      )}
     </div>
     )
 }

@@ -2,10 +2,11 @@ import React, { useState ,useEffect} from 'react'
 import axios from 'axios'
 import {Navbar} from './Navbar'
 import { NavLink ,useNavigate} from 'react-router-dom'
-import {TailSpin} from 'react-loader-spinner'
 import {message} from 'antd'
 import ButtonLoad from './ButtonLoad'
+import LoadingComponent from './LoadingComponent'
 import './style.css'
+
 function Login() {
   const navigate = useNavigate()
   const [user, setUser] = useState({
@@ -13,14 +14,9 @@ function Login() {
     password:"",
   });
   const [load,setLoad] = useState(false)
+  
    useEffect(() => {
-     setTimeout(()=>{
-      <TailSpin
-      color="#00BFFF"
-      height={100}
-      width={100}
-    />
-    },4000)
+    setLoad(true)
     axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
@@ -29,6 +25,7 @@ function Login() {
       else{
         navigate('/login')
       }
+      setLoad(false)
     })
   }, [navigate]);
   axios.defaults.withCredentials=true
@@ -61,6 +58,8 @@ function Login() {
   return (
     
     <div>
+      {load?<LoadingComponent/>:
+      (<div>
       <header>USER VIEWS
       </header>
         <div>
@@ -81,7 +80,9 @@ function Login() {
         <NavLink style={({color:'azure'})} to='/'>Continue as Guest</NavLink>
       </div>
       </form>
-      
+      </div>
+      )
+    }
     </div>
   );
 }

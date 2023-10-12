@@ -3,6 +3,7 @@ import axios from 'axios'
 import {Navbar} from './Navbar'
 import { message } from 'antd'
 import {  useNavigate } from 'react-router-dom'
+import LoadingComponent from './LoadingComponent'
 import ButtonLoad from './ButtonLoad'
 import './style.css'
 
@@ -17,6 +18,7 @@ export default function Register() {
     }
   )
   const[load,setLoad] = useState(false)
+  const[loading,setLoading] = useState(false)
   const change = e => {
     const { name, value } = e.target
     setUser({
@@ -65,27 +67,46 @@ export default function Register() {
     setLoad(false)
   }
 }
+useEffect(()=>{
+  setLoading(true)
+  axios.post('http://localhost:5000/',{t:localStorage.getItem("token")})
+  .then(res=>{
+    if(res.data.valid){
+      navigate('/')
+    }
+    else{
+      navigate('/register')
+    }
+    setLoading(false)
+  })
+},[navigate])
+
   const { name, email, password, retype } = user
   return ( 
     <div>
-       <header>USER VIEWS</header>
-       <div>
-          <Navbar/>
-          </div>
-        <form>
-          
-        <div className='container'>
-        <input  name='name' type='text' value={name} onChange={change} placeholder='Enter Name'></input>
-        <input name='email' type='email' value={email} onChange={change} placeholder='Enter E-mail'></input>
-        <input name='password' type='password' value={password} onChange={change} placeholder='Enter Password'></input>
-        <input name='retype' type='password' value={retype} onChange={change} placeholder='Retype Password'></input>
-        </div>
-        <div>
-        <button type='submit' onClick={submit} disabled={load}>
-            {load?<ButtonLoad/>:<span>Sign Up</span>}
-          </button>
-        </div>
-        </form>
+      {loading?<LoadingComponent/>:
+          (<div>
+            <header>USER VIEWS</header>
+            <div>
+                <Navbar/>
+                </div>
+              <form>
+                
+              <div className='container'>
+              <input  name='name' type='text' value={name} onChange={change} placeholder='Enter Name'></input>
+              <input name='email' type='email' value={email} onChange={change} placeholder='Enter E-mail'></input>
+              <input name='password' type='password' value={password} onChange={change} placeholder='Enter Password'></input>
+              <input name='retype' type='password' value={retype} onChange={change} placeholder='Retype Password'></input>
+              </div>
+              <div>
+              <button type='submit' onClick={submit} disabled={load}>
+                  {load?<ButtonLoad/>:<span>Register</span>}
+                </button>
+              </div>
+              </form>
+            </div>
+          )
+      }
     </div>
   )
 }
