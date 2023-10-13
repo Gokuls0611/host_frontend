@@ -62,7 +62,7 @@ export default function Placeorder() {
             </div>
             </div>
           ):(
-        <div className='cart_container'>
+            <div className='cart_container'>
             {order.map((i,index)=>
             <div className='po' key={index}>
             <table className='layout'>
@@ -80,13 +80,10 @@ export default function Placeorder() {
                 <td>{v.quantity}</td>
                 <td>{v.price}</td>
                 </tr>
-               
-                )}
-            </tbody>
+            )}
+            </tbody>            
             </table>
-            <div className='po_total'>
-            Total:{i.reduce((total, item) => total +item.price,0)}
-            </div>
+            <div className='total-placed'>Total:{i.reduce((total, item) => total +item.price,0)}</div>
             <button value={oid[index]} onClick={order_delete}>Cancel Order</button>
             </div>
            

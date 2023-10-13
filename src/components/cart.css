@@ -40,16 +40,17 @@ button:hover{
 }
 
 .cart_container{
+    background-color:rgb(140, 173, 164);
     width: 500px;
     display: inline-grid;
     justify-content: center;
-    align-items: center;
-    max-width: 400px; /* Set a maximum width for better readability on smaller screens */
-    margin: 0 auto ;
-    padding: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.cart-item-count{
+    justify-content: center;
+    width:fit-content;
+}
 .total{
     border: solid black;
     background-color: black;
@@ -60,17 +61,33 @@ button:hover{
 }
 .placeOrder{
     margin-top: 5px;
-    margin-left:150px;
 }
 
 .po{
-    margin-bottom: 15px;
+    margin:15px 0 15px 0;
+    justify-content: center;
 }
 
-.po_total{
-    border: solid black;
+.total-placed{
     background-color: black;
     color:azure;
-    padding: 0 10px 0 10px;
-    margin-left: auto;
+    justify-content: center;
 }
+
+@media (max-width:768px) {
+    .cart_container{
+        width:fit-content;
+    }
+    .placeOrder{
+            text-align: center;
+            align-content: center;
+            justify-content: center;
+    }
+    .total-placed{
+        width:100%;
+    }
+    .po,.layout{
+        width: 100%;
+    }
+}
+

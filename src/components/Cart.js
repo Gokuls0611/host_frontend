@@ -92,6 +92,7 @@ useEffect(()=>{
         )
         :
         <div className='cart_container'>
+          <div className='po'>
           <table className='layout'>
             <thead>
           <tr>
@@ -104,11 +105,11 @@ useEffect(()=>{
         {cart.map((item,index) => (
           <tr key={index}>
             <td>{item.name}</td>
-            <td>
-            <p className='cart_item_count'>
-            <input type="submit" value="-" onClick={() => removeFromCart(item)}/>
-            {item.quantity}
+            <td className='cart-item-count'>
+            <p>
             <input type="submit" value="+" onClick={() => addToCart(item)}/>
+            {item.quantity}
+            <input type="submit" value="-" onClick={() => removeFromCart(item)}/>
             </p> 
             </td>
             <td>{item.price}</td>
@@ -117,10 +118,14 @@ useEffect(()=>{
         }
         </tbody>
         </table>
+        </div>
           <div className='total'>
           Total:{grandTotal}
           </div>
+          <div>
           <button className='placeOrder' onClick={placeorder}>Place Order</button>
+          </div>
+         
           </div>
       ):(<LoadingComponent/>) 
     }
