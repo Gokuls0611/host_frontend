@@ -14,9 +14,9 @@ function Login() {
     password:"",
   });
   const [load,setLoad] = useState(false)
-  
+  const [loading,setLoading] = useState(false)
    useEffect(() => {
-    setLoad(true)
+    setLoading(true)
     axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
@@ -25,7 +25,7 @@ function Login() {
       else{
         navigate('/login')
       }
-      setLoad(false)
+      setLoading(false)
     })
   }, [navigate]);
   axios.defaults.withCredentials=true
@@ -58,7 +58,7 @@ function Login() {
   return (
     
     <div>
-      {load?<LoadingComponent/>:
+      {loading?<LoadingComponent/>:
       (<div>
       <header>USER VIEWS
       </header>

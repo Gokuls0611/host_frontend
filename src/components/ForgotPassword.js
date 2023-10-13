@@ -90,11 +90,11 @@ const getotp = (e) =>{
         navigate('/')
       }
       else{
-        navigate('/FogotPassword')
+        navigate('/ForgotPassword')
       }
       setLoading(false)
     })
-  })
+  },[navigate])
 
 const verify = (e) => {
   e.preventDefault()

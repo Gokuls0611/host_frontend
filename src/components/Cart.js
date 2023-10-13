@@ -76,7 +76,7 @@ const placeorder=()=>(
 
 useEffect(()=>{
   sessionStorage.setItem("cart",JSON.stringify(cart))
-})
+},[])
 
   return (
     <div className='mtop'>
