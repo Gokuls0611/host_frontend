@@ -268,10 +268,9 @@ margin:0;
 align-items: center;
 justify-content: center;
 gap: 10px; /* Adjust the gap between products as needed */
-max-width: 100%; /* Ensure products wrap to the next line on smaller screens */
+width: 100%; /* Ensure products wrap to the next line on smaller screens */
 }
 .product-container p{
-margin-top:50px;
 text-align: center;
 }
 .product {
@@ -317,12 +316,13 @@ font-size: medium;
 padding: 10px;
 border: none;
 border-radius: 5px;
-margin:4px;
+height:30px;
+width:30px;
 }
 .item-count{
 background-color: black;
 color: #fff;
-width:100px;
+width:75px;
 display: inline-block;
 }
 
