@@ -15,7 +15,7 @@ function Cart() {
     const c = sessionStorage.getItem('cart')
     const par = JSON.parse(c)
     setCart(par)
-    axios.get("https://drab-plum-kangaroo-tutu.cyclic.app/products")
+    axios.get("https://shiny-pink-umbrella.cyclic.app/products")
       .then((response) => {
         const data = response.data.map(item => ({ id: item.id, price: item.price }))
         setCost(data)
@@ -55,11 +55,11 @@ const grandTotal = cart.reduce(
 );
 
 const placeorder=()=>(
-    axios.post("https://drab-plum-kangaroo-tutu.cyclic.app/",{t:localStorage.getItem('token')})
+    axios.post("https://shiny-pink-umbrella.cyclic.app/",{t:localStorage.getItem('token')})
     .then(res=>{
       if(res.data.valid){
         navigate('/')
-        axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/placeorders',{cart:cart,t:localStorage.getItem('token')})
+        axios.post('https://shiny-pink-umbrella.cyclic.app/placeorders',{cart:cart,t:localStorage.getItem('token')})
         .then(res=>{
           message.info(res.data.message)
           
