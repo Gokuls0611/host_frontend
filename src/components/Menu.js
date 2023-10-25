@@ -9,7 +9,7 @@ export default function Menu() {
   const [auth,setAuth] = useState(false)
   const navigate = useNavigate()
     useEffect(()=>{
-      axios.post('https://drab-plum-kangaroo-tutu.cyclic.app/',{t:localStorage.getItem("token")})
+      axios.post('https://shiny-pink-umbrella.cyclic.app/',{t:localStorage.getItem("token")})
       .then(res=>{
         if(res.data.valid && localStorage.getItem('token')){
             setAuth(res.data.valid)
@@ -22,7 +22,7 @@ export default function Menu() {
     axios.defaults.withCredentials=true
 
     const logout =()=>{
-      axios.get('https://drab-plum-kangaroo-tutu.cyclic.app/logout')
+      axios.get('https://shiny-pink-umbrella.cyclic.app/logout')
       .then(res=>{
           navigate('/login')
           message.info(res.data.message)
