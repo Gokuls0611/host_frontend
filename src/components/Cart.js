@@ -15,7 +15,7 @@ function Cart() {
     const c = sessionStorage.getItem('cart')
     const par = JSON.parse(c)
     setCart(par)
-    axios.get("https://shiny-pink-umbrella.cyclic.app/products")
+    axios.get("http://localhost:5000/products")
       .then((response) => {
         const data = response.data.map(item => ({ id: item.id, price: item.price }))
         setCost(data)
@@ -47,7 +47,9 @@ function Cart() {
     
   };
 
- 
+  useEffect(()=>{
+    sessionStorage.setItem("cart",JSON.stringify(cart))
+  })
 
 const grandTotal = cart.reduce(
   (total, item) => total +item.price,
@@ -58,14 +60,12 @@ const placeorder=()=>(
     axios.post("https://shiny-pink-umbrella.cyclic.app/",{t:localStorage.getItem('token')})
     .then(res=>{
       if(res.data.valid){
+      axios.post('https://shiny-pink-umbrella.cyclic.app/placeorders',{cart:cart,t:localStorage.getItem('token')})
+      .then(res=>{
+        message.info(res.data.message)
         navigate('/')
-        axios.post('https://shiny-pink-umbrella.cyclic.app/placeorders',{cart:cart,t:localStorage.getItem('token')})
-        .then(res=>{
-          message.info(res.data.message)
-          
-        })
-        sessionStorage.setItem(cart,JSON.stringify([]))
-        setCart([]);
+      })
+      setCart([]);
     }else{
       message.info("Login to Continue")
       navigate('/login')
@@ -73,10 +73,6 @@ const placeorder=()=>(
     })
     
 )
-
-useEffect(()=>{
-  sessionStorage.setItem("cart",JSON.stringify(cart))
-},[])
 
   return (
     <div className='mtop'>
