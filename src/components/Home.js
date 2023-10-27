@@ -97,7 +97,7 @@ const showcart=()=>{
 }
 return (
   <div >
-    <div className='home-header'>Demo E-Commerce Website</div>
+    <div className='home-header'>E-Commerce Website</div>
     <div className='searchandcart'>
       <div className='home-search' >
         <select  onChange={(e)=>setOptions(e.target.value)}>
