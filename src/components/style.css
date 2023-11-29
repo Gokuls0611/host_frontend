@@ -321,10 +321,11 @@ height:30px;
 width:30px;
 }
 .item-count{
-background-color: black;
-color: #fff;
-width:75px;
-display: inline-block;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  max-width: 90px;
 }
 
 @media (max-width:768px) {
