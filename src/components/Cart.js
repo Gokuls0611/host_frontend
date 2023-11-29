@@ -15,7 +15,7 @@ function Cart() {
     const c = sessionStorage.getItem('cart')
     const par = JSON.parse(c)
     setCart(par)
-    axios.get("http://localhost:5000/products")
+    axios.get("https://shiny-pink-umbrella.cyclic.app/products")
       .then((response) => {
         const data = response.data.map(item => ({ id: item.id, price: item.price }))
         setCost(data)
