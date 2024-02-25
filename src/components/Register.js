@@ -35,8 +35,12 @@ export default function Register() {
   const submit = (e) => {
     e.preventDefault()
     setLoad(true)
-    if( name!=="" && email!=="" && password!=="" && (password === retype)){
-    if(password.length >= 8 &&
+    if( name!=="" && email!=="" && password!=="" && retype!==""){
+    if(password===retype){
+        message.warning("Mismatch Password Please Try Again...")
+        setLoad(false)
+    }
+    else if(password.length >= 8 &&
       uppercaseRegex.test(password) &&
       lowercaseRegex.test(password) &&
       numberRegex.test(password) &&
@@ -60,7 +64,7 @@ export default function Register() {
               setLoad(false)
         })        
     } else {
-        message.warning("Enter a Valid Password...")
+        message.warning("Enter a Strong Password...")
         setLoad(false)
     }
     
