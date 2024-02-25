@@ -55,15 +55,17 @@ export default function Register() {
             setLoad(false)
 
         })
-        
+      .catch(err){
+              message.warning("Please Try again Later ...")
+        }        
     } else {
-        alert("invalid input")
+        message.warning("Enter a Strong Password...")
         setLoad(false)
     }
     
   }
   else{
-    message.warning("Enter a Strong Password")
+    message.warning("Please Check all the fields...")
     setLoad(false)
   }
 }
