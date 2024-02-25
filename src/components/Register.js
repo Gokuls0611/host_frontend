@@ -36,7 +36,7 @@ export default function Register() {
     e.preventDefault()
     setLoad(true)
     if( name!=="" && email!=="" && password!=="" && retype!==""){
-    if(password===retype){
+    if(password!==retype){
         message.warning("Mismatch Password Please Try Again...")
         setLoad(false)
     }
