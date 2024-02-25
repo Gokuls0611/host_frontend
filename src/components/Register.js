@@ -35,7 +35,7 @@ export default function Register() {
   const submit = (e) => {
     e.preventDefault()
     setLoad(true)
-    if( name && email && password && (password === retype)){
+    if( name!=="" && email!=="" && password!=="" && (password === retype)){
     if(password.length >= 8 &&
       uppercaseRegex.test(password) &&
       lowercaseRegex.test(password) &&
