@@ -55,10 +55,10 @@ export default function Register() {
             setLoad(false)
 
         })
-      .catch(err){
+      .catch(err=>{
               message.warning("Please Try again Later ...")
               setLoad(false)
-        }        
+        })        
     } else {
         message.warning("Enter a Strong Password...")
         setLoad(false)
