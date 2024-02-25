@@ -60,7 +60,7 @@ export default function Register() {
               setLoad(false)
         })        
     } else {
-        message.warning("Enter a Strong Password...")
+        message.warning("Enter a Valid Password...")
         setLoad(false)
     }
     
