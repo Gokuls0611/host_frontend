@@ -39,7 +39,7 @@ function Home() {
   
 
   useEffect(() => {
-    axios.get("https://shiny-pink-umbrella.cyclic.app/products")
+    axios.get("https://host-backend-nine.vercel.app/products")
       .then((response) => {
         const data = response.data;
         setJsonData(data);
