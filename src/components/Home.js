@@ -39,7 +39,7 @@ function Home() {
   
 
   useEffect(() => {
-    axios.get("https://host-backend-nine.vercel.app/products")
+    axios.get("https://vercel.com/gokulfasts-projects/host-backend/23e9paNTd8EYKZcy9i2U9SAaB39c/products")
       .then((response) => {
         const data = response.data;
         setJsonData(data);
