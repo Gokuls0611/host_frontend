@@ -17,7 +17,7 @@ function Login() {
   const [loading,setLoading] = useState(false)
    useEffect(() => {
     setLoading(true)
-    axios.post('https://shiny-pink-umbrella.cyclic.app/',{t:localStorage.getItem("token")})
+    axios.post('https://host-backend-six.vercel.app/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
         navigate('/')
@@ -41,7 +41,7 @@ function Login() {
   const handleSubmit = (e) => {
     setLoad(true)
     e.preventDefault();
-    axios.post('https://shiny-pink-umbrella.cyclic.app/login',user)
+    axios.post('https://host-backend-six.vercel.app/login',user)
       .then(res => {
         if (res.data.Login) {
           localStorage.setItem("token",res.data.token)

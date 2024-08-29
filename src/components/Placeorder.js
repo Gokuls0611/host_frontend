@@ -11,12 +11,12 @@ export default function Placeorder() {
     const [oid,setOid] = useState([])
     const [loading,setLoading] = useState(true)
     const order_delete =(e) =>{
-        axios.post("https://shiny-pink-umbrella.cyclic.app/",{t:localStorage.getItem('token')})
+        axios.post("https://host-backend-six.vercel.app/",{t:localStorage.getItem('token')})
         .then(res=>{
           if(res.data.valid){
-          axios.post('https://shiny-pink-umbrella.cyclic.app/deleteOrder',{t:localStorage.getItem('token'),id:e.target.value})
+          axios.post('https://host-backend-six.vercel.app/deleteOrder',{t:localStorage.getItem('token'),id:e.target.value})
           .then(res=>{
-            axios.post('https://shiny-pink-umbrella.cyclic.app/orderList',{t:localStorage.getItem('token')})
+            axios.post('https://host-backend-six.vercel.app/orderList',{t:localStorage.getItem('token')})
                 .then(res=>{
                 setOrder(res.data.order.map((i)=>i.items))
                 setOid(res.data.order.map((i)=>i._id))
@@ -31,10 +31,10 @@ export default function Placeorder() {
         })
     }
     useEffect(()=>{
-        axios.post("https://shiny-pink-umbrella.cyclic.app/",{t:localStorage.getItem('token')})
+        axios.post("https://host-backend-six.vercel.app/",{t:localStorage.getItem('token')})
         .then(res=>{
           if(res.data.valid){
-          axios.post('https://shiny-pink-umbrella.cyclic.app/orderList',{t:localStorage.getItem('token')})
+          axios.post('https://host-backend-six.vercel.app/orderList',{t:localStorage.getItem('token')})
           .then(res=>{
               setOrder(res.data.order.map((i)=>i.items))
               setOid(res.data.order.map((i)=>i._id))

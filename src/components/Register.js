@@ -47,7 +47,7 @@ export default function Register() {
       specialCharRegex.test(password)){
 
         axios
-        .post('https://shiny-pink-umbrella.cyclic.app/register',user)
+        .post('https://host-backend-six.vercel.app/register',user)
         .then( res => {
           if(!res.data.Login){
             message.success(res.data.message)
@@ -76,7 +76,7 @@ export default function Register() {
 }
 useEffect(()=>{
   setLoading(true)
-  axios.post('https://shiny-pink-umbrella.cyclic.app/',{t:localStorage.getItem("token")})
+  axios.post('https://host-backend-six.vercel.app/',{t:localStorage.getItem("token")})
   .then(res=>{
     if(res.data.valid){
       navigate('/')

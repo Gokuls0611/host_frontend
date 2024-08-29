@@ -39,7 +39,7 @@ function Home() {
   
 
   useEffect(() => {
-    axios.get("https://host-backend-nine.vercel.app/products")
+    axios.get("https://host-backend-six.vercel.app/products")
       .then((response) => {
         const data = response.data;
         setJsonData(data);
@@ -53,7 +53,7 @@ function Home() {
 
 useEffect(()=>{
   const c =  sessionStorage.getItem("cart");
-  if(c===null || c===[]){
+  if(c===null || c===undefined){
       const par = []
       setCart(par);
     }

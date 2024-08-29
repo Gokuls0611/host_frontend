@@ -15,7 +15,7 @@ function Cart() {
     const c = sessionStorage.getItem('cart')
     const par = JSON.parse(c)
     setCart(par)
-    axios.get("https://shiny-pink-umbrella.cyclic.app/products")
+    axios.get("https://host-backend-six.vercel.app/products")
       .then((response) => {
         const data = response.data.map(item => ({ id: item.id, price: item.price }))
         setCost(data)
@@ -57,10 +57,10 @@ const grandTotal = cart.reduce(
 );
 
 const placeorder=()=>(
-    axios.post("https://shiny-pink-umbrella.cyclic.app/",{t:localStorage.getItem('token')})
+    axios.post("https://host-backend-six.vercel.app/",{t:localStorage.getItem('token')})
     .then(res=>{
       if(res.data.valid){
-      axios.post('https://shiny-pink-umbrella.cyclic.app/placeorders',{cart:cart,t:localStorage.getItem('token')})
+      axios.post('https://host-backend-six.vercel.app/placeorders',{cart:cart,t:localStorage.getItem('token')})
       .then(res=>{
         message.info(res.data.message)
         navigate('/')

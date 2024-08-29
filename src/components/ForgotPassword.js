@@ -47,7 +47,7 @@ export default function ForgotPassword() {
     if((password === retype)){
 
         axios
-        .post('https://shiny-pink-umbrella.cyclic.app/setPassword',{email,password})
+        .post('https://host-backend-six.vercel.app/setPassword',{email,password})
         .then( res => {
             message.info(res.data.message)
             navigate('/login')
@@ -84,7 +84,7 @@ const getotp = (e) =>{
 }
   useEffect(()=>{
     setLoading(true)
-    axios.post('https://shiny-pink-umbrella.cyclic.app/',{t:localStorage.getItem("token")})
+    axios.post('https://host-backend-six.vercel.app/',{t:localStorage.getItem("token")})
     .then(res=>{
       if(res.data.valid){
         navigate('/')
@@ -99,7 +99,7 @@ const getotp = (e) =>{
 const verify = (e) => {
   e.preventDefault()
   setLoad(true)
-      axios.post("https://shiny-pink-umbrella.cyclic.app/verifyotp",{email:email,otp:otp})
+      axios.post("https://host-backend-six.vercel.app/verifyotp",{email:email,otp:otp})
       .then((res)=>{
         if(res.data.verify){
           message.success(res.data.message)
