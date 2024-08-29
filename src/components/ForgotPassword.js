@@ -70,7 +70,7 @@ export default function ForgotPassword() {
 const getotp = (e) =>{
   e.preventDefault()
   setLoad(true)
-      axios.post('https://host-email.onrender.com/forgotPassword',{email})
+      axios.post('https://host-backend-six.vercel.app/forgotPassword',{email})
       .then(res => {
           if(res.data.b){
           message.info(res.data.message)
